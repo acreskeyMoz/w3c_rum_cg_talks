@@ -54,6 +54,7 @@ body { font-family: var(--text); color: var(--ink); -webkit-font-smoothing: anti
 .slide.spec .chrome .section { font-size: 30px; font-weight: 700; opacity: 1; letter-spacing: .02em; }
 .slide.spec .chrome .num { opacity: 1; }
 .flow { width: 100%; height: auto; margin-top: auto; margin-bottom: 64px; }
+.flow.flow-top { margin-top: 48px; margin-bottom: 0; }
 .flow-c { font-family: var(--text); font-size: 28px; font-weight: 600; fill: #2b0b52; }
 .flow-s { font-family: var(--text); font-size: 22px; fill: #55506a; }
 .flow-code { font-family: var(--mono); font-size: 34px; font-weight: 700; fill: #7542e5; }
@@ -140,6 +141,11 @@ code { font-family: var(--mono); font-size: .9em; background: var(--lilac-2); pa
 .stats.telemetry { margin-top: 72px; margin-bottom: 0; grid-template-columns: repeat(3, 1fr); }
 .stats.telemetry .big { font-size: 160px; }
 .stats.telemetry .what { font-size: 29px; }
+.prelim { display: inline-block; align-self: flex-start; margin-top: 22px; font-size: 24px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--night); background: #ffe9a8; border-radius: 999px; padding: 8px 20px 7px; }
+.stats.timing { grid-template-columns: repeat(2, 1fr); max-width: 1300px; column-gap: 96px; }
+.stats.timing .big { font-size: 180px; white-space: nowrap; }
+.stats.timing .big.word { font-size: 120px; padding-top: 12px; padding-bottom: 8px; }
+.stats.timing .u { font-size: 70px; margin-left: 10px; }
 .stat .split { display: flex; flex-direction: column; gap: 14px; margin: 18px 0 18px; }
 .stat .split > div { display: flex; align-items: baseline; gap: 20px; }
 .stat .mid { font-size: 84px; line-height: 1; min-width: 250px; }
@@ -168,6 +174,12 @@ code { font-family: var(--mono); font-size: .9em; background: var(--lilac-2); pa
 .k { font-size: 22px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--violet); }
 .hev3-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 44px; }
 .hev3-grid p { font-size: 34px; line-height: 1.42; margin-top: 14px; }
+.hev3-grid { grid-template-columns: 1fr 1.25fr; }
+.hev3-sub { font-size: 28px !important; color: var(--muted); }
+.hev3-aims { list-style: none; margin-top: 14px; }
+.hev3-aims li { font-size: 34px; line-height: 1.3; padding: 14px 0 14px 44px; position: relative; border-bottom: 1px solid var(--rule); }
+.hev3-aims li:last-child { border-bottom: 0; }
+.hev3-aims li::before { content: ""; position: absolute; left: 0; top: 30px; width: 18px; height: 18px; border-radius: 50%; background: var(--violet); }
 .hev3 .refs { margin-top: 36px; font-size: 23px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 28px; }
 .hev3 .refs a { font-family: var(--mono); }
 .pill.inline { margin: 0 10px 0 0; vertical-align: 3px; font-size: 16px; padding: 4px 11px 3px; }
@@ -333,10 +345,11 @@ body.nocursor { cursor: none; }
 <section class="slide spec" data-section="03 · Speculation Rules">
   <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
   <h2><span class="idx">03</span>Speculation Rules prefetch</h2>
+  <svg class="flow flow-top" viewBox="0 0 1696 262" role="img" aria-label="How Speculation Rules prefetch works: the page declares rules, a rule triggers immediately, on hover or on click, Firefox prefetches the next document in the background, and the click navigates instantly from the prefetch."><rect x="0" y="0" width="300" height="178" rx="18" fill="#f4ecf9"/><rect x="465" y="0" width="300" height="178" rx="18" fill="#f4ecf9"/><rect x="930" y="0" width="300" height="178" rx="18" fill="#f4ecf9"/><rect x="1395" y="0" width="300" height="178" rx="18" fill="#f4ecf9"/><rect x="90.0" y="14" width="120" height="150" rx="10" fill="#fff" stroke="#b9a2f0" stroke-width="2.5"/><rect x="102.0" y="30" width="96" height="12" rx="3" fill="#e8e3ef"/><rect x="102.0" y="56" width="96" height="56" rx="6" fill="#ede4fb" stroke="#7542e5" stroke-width="2"/><text x="150.0" y="96" text-anchor="middle" class="flow-code">{ }</text><rect x="102.0" y="126" width="70" height="10" rx="3" fill="#e8e3ef"/><rect x="102.0" y="144" width="84" height="10" rx="3" fill="#e8e3ef"/><rect x="555.0" y="14" width="120" height="150" rx="10" fill="#fff" stroke="#b9a2f0" stroke-width="2.5"/><rect x="567.0" y="30" width="96" height="12" rx="3" fill="#e8e3ef"/><rect x="567.0" y="60" width="80" height="10" rx="3" fill="#e8e3ef"/><path d="M567.0 96 H645.0" stroke="#7542e5" stroke-width="5" stroke-linecap="round"/><rect x="567.0" y="122" width="96" height="10" rx="3" fill="#e8e3ef"/><path transform="translate(625.0,88)" d="M0 0 L0 40 L11 30 L19 48 L27 44 L19 27 L34 27 Z" fill="#2b0b52" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/><rect x="1020.0" y="14" width="120" height="150" rx="10" fill="#fff" stroke="#7542e5" stroke-width="2.5" stroke-dasharray="9 7"/><path d="M1080.0 40 V104" stroke="#7542e5" stroke-width="6" stroke-linecap="round"/><path d="M1058.0 84 L1080.0 108 L1102.0 84" fill="none" stroke="#7542e5" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><rect x="1034.0" y="132" width="92" height="12" rx="6" fill="#e8e3ef"/><rect x="1034.0" y="132" width="60" height="12" rx="6" fill="#7542e5"/><rect x="1485.0" y="14" width="120" height="150" rx="10" fill="#fff" stroke="#7542e5" stroke-width="2.5"/><rect x="1497.0" y="30" width="96" height="12" rx="3" fill="#7542e5"/><path transform="translate(1523.0,56)" d="M26 0 L0 50 H20 L14 92 L46 34 H25 L34 0 Z" fill="#7542e5"/><path d="M324 89 H437" stroke="#2b0b52" stroke-width="4" stroke-linecap="round"/><path d="M425 77 L441 89 L425 101" fill="none" stroke="#2b0b52" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M789 89 H902" stroke="#2b0b52" stroke-width="4" stroke-linecap="round"/><path d="M890 77 L906 89 L890 101" fill="none" stroke="#2b0b52" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M1254 89 H1367" stroke="#2b0b52" stroke-width="4" stroke-linecap="round"/><path d="M1355 77 L1371 89 L1355 101" fill="none" stroke="#2b0b52" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><text x="150.0" y="222" text-anchor="middle" class="flow-c">Page declares rules</text><text x="150.0" y="254" text-anchor="middle" class="flow-s">script tag or HTTP header</text><text x="615.0" y="222" text-anchor="middle" class="flow-c">Rule triggers</text><text x="615.0" y="254" text-anchor="middle" class="flow-s">immediately, on hover, or on click</text><text x="1080.0" y="222" text-anchor="middle" class="flow-c">Firefox prefetches</text><text x="1080.0" y="254" text-anchor="middle" class="flow-s">the next document in the background</text><text x="1545.0" y="222" text-anchor="middle" class="flow-c">Click: instant</text><text x="1545.0" y="254" text-anchor="middle" class="flow-s">served from the prefetch</text></svg>
   <div class="rows">
     <div class="row">
       <div><div class="name">Same-origin prefetch</div><span class="pill night">Nightly · desktop</span></div>
-      <div><div class="body">Prefetch <strong>immediately</strong>, on <strong>hover</strong>, or on <strong>click</strong>.</div>
+      <div><div class="body">Prefetched documents are reused when the user navigates.</div>
         <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1969396">bug 1969396</a></div></div>
     </div>
     <div class="row">
@@ -345,21 +358,6 @@ body.nocursor { cursor: none; }
         <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2041381">bug 2041381</a></div></div>
     </div>
   </div>
-  <svg class="flow" viewBox="0 0 1696 262" role="img" aria-label="How Speculation Rules prefetch works: the page declares rules, a rule triggers immediately, on hover or on click, Firefox prefetches the next document in the background, and the click navigates instantly from the prefetch."><rect x="0" y="0" width="300" height="178" rx="18" fill="#f4ecf9"/><rect x="465" y="0" width="300" height="178" rx="18" fill="#f4ecf9"/><rect x="930" y="0" width="300" height="178" rx="18" fill="#f4ecf9"/><rect x="1395" y="0" width="300" height="178" rx="18" fill="#f4ecf9"/><rect x="90.0" y="14" width="120" height="150" rx="10" fill="#fff" stroke="#b9a2f0" stroke-width="2.5"/><rect x="102.0" y="30" width="96" height="12" rx="3" fill="#e8e3ef"/><rect x="102.0" y="56" width="96" height="56" rx="6" fill="#ede4fb" stroke="#7542e5" stroke-width="2"/><text x="150.0" y="96" text-anchor="middle" class="flow-code">{ }</text><rect x="102.0" y="126" width="70" height="10" rx="3" fill="#e8e3ef"/><rect x="102.0" y="144" width="84" height="10" rx="3" fill="#e8e3ef"/><rect x="555.0" y="14" width="120" height="150" rx="10" fill="#fff" stroke="#b9a2f0" stroke-width="2.5"/><rect x="567.0" y="30" width="96" height="12" rx="3" fill="#e8e3ef"/><rect x="567.0" y="60" width="80" height="10" rx="3" fill="#e8e3ef"/><path d="M567.0 96 H645.0" stroke="#7542e5" stroke-width="5" stroke-linecap="round"/><rect x="567.0" y="122" width="96" height="10" rx="3" fill="#e8e3ef"/><path transform="translate(625.0,88)" d="M0 0 L0 40 L11 30 L19 48 L27 44 L19 27 L34 27 Z" fill="#2b0b52" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/><rect x="1020.0" y="14" width="120" height="150" rx="10" fill="#fff" stroke="#7542e5" stroke-width="2.5" stroke-dasharray="9 7"/><path d="M1080.0 40 V104" stroke="#7542e5" stroke-width="6" stroke-linecap="round"/><path d="M1058.0 84 L1080.0 108 L1102.0 84" fill="none" stroke="#7542e5" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><rect x="1034.0" y="132" width="92" height="12" rx="6" fill="#e8e3ef"/><rect x="1034.0" y="132" width="60" height="12" rx="6" fill="#7542e5"/><rect x="1485.0" y="14" width="120" height="150" rx="10" fill="#fff" stroke="#7542e5" stroke-width="2.5"/><rect x="1497.0" y="30" width="96" height="12" rx="3" fill="#7542e5"/><path transform="translate(1523.0,56)" d="M26 0 L0 50 H20 L14 92 L46 34 H25 L34 0 Z" fill="#7542e5"/><path d="M324 89 H437" stroke="#2b0b52" stroke-width="4" stroke-linecap="round"/><path d="M425 77 L441 89 L425 101" fill="none" stroke="#2b0b52" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M789 89 H902" stroke="#2b0b52" stroke-width="4" stroke-linecap="round"/><path d="M890 77 L906 89 L890 101" fill="none" stroke="#2b0b52" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M1254 89 H1367" stroke="#2b0b52" stroke-width="4" stroke-linecap="round"/><path d="M1355 77 L1371 89 L1355 101" fill="none" stroke="#2b0b52" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><text x="150.0" y="222" text-anchor="middle" class="flow-c">Page declares rules</text><text x="150.0" y="254" text-anchor="middle" class="flow-s">script tag or HTTP header</text><text x="615.0" y="222" text-anchor="middle" class="flow-c">Rule triggers</text><text x="615.0" y="254" text-anchor="middle" class="flow-s">immediately, on hover, or on click</text><text x="1080.0" y="222" text-anchor="middle" class="flow-c">Firefox prefetches</text><text x="1080.0" y="254" text-anchor="middle" class="flow-s">the next document in the background</text><text x="1545.0" y="222" text-anchor="middle" class="flow-c">Click: instant</text><text x="1545.0" y="254" text-anchor="middle" class="flow-s">served from the prefetch</text></svg>
-</section>
-
-<!-- 6a. Prefetch telemetry -->
-<section class="slide spec" data-section="03 · Speculation Rules">
-  <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
-  <h2>What Nightly sees so far</h2>
-  <div class="stats telemetry">
-    <div class="stat"><div class="lbl">Top-1000 homepages</div><div class="big">~9.2%</div><div class="what">of Tranco top-1000 homepages have speculation rules</div></div>
-    <div class="stat"><div class="lbl">All hard navigations</div><div class="big">~3.9%</div><div class="what">of top-level pages ship at least one prefetch rule</div></div>
-    <div class="stat"><div class="lbl">Delivery method</div>
-      <div class="split"><div><span class="mid">~3.6%</span><span class="via"><code>&lt;script&gt;</code> tag</span></div><div><span class="mid">~2.0%</span><span class="via">HTTP header</span></div></div>
-      <div class="what">of top-level pages, by how rules arrive</div></div>
-  </div>
-  <p class="stat-note">Homepages: Tranco top-1000 crawl with Firefox Nightly 158.0a1. Telemetry: Firefox Nightly desktop, Oct 30 – Nov 12 2026. Use counters over ~48M top-level pages. A page can deliver rules both ways.</p>
 </section>
 
 <!-- 6b. WPT progress chart -->
@@ -374,6 +372,33 @@ body.nocursor { cursor: none; }
   </div>
   <p class="chart-note">Speculation Rules is currently enabled only in Firefox desktop. Results begin Aug 2026, when these tests started running in Firefox CI. Weekly samples.</p>
   <script type="application/json" id="wpt-data">{"firefox":[["2026-08-04",84,244],["2026-08-11",85,244],["2026-08-18",85,244],["2026-08-25",85,244],["2026-09-01",85,244],["2026-09-08",85,244],["2026-09-15",86,245],["2026-09-22",94,249],["2026-09-29",95,249],["2026-10-06",121,249],["2026-10-13",130,250],["2026-10-20",149,250],["2026-10-27",153,250],["2026-11-03",157,261],["2026-11-10",183,261],["2026-11-13",196,265]]}</script>
+</section>
+
+<!-- 6a. Prefetch telemetry -->
+<section class="slide spec" data-section="03 · Speculation Rules">
+  <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
+  <h2>What Nightly sees so far: adoption</h2>
+  <div class="prelim">Preliminary observations · not yet experimental data</div>
+  <div class="stats telemetry">
+    <div class="stat"><div class="lbl">Top-1000 homepages</div><div class="big">~9.2%</div><div class="what">of Tranco top-1000 homepages have speculation rules</div></div>
+    <div class="stat"><div class="lbl">All hard navigations</div><div class="big">~3.9%</div><div class="what">of top-level pages ship at least one prefetch rule</div></div>
+    <div class="stat"><div class="lbl">Delivery method</div>
+      <div class="split"><div><span class="mid">~3.6%</span><span class="via"><code>&lt;script&gt;</code> tag</span></div><div><span class="mid">~2.0%</span><span class="via">HTTP header</span></div></div>
+      <div class="what">of top-level pages, by how rules arrive</div></div>
+  </div>
+  <p class="stat-note">Homepages: Tranco top-1000 crawl with Firefox Nightly 158.0a1. Telemetry: Firefox Nightly desktop, Oct 30 – Nov 12 2026. Use counters over ~48M top-level pages. A page can deliver rules both ways.</p>
+</section>
+
+<!-- 6a2. Prefetch timing telemetry -->
+<section class="slide spec" data-section="03 · Speculation Rules">
+  <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
+  <h2>What Nightly sees so far: speed</h2>
+  <div class="prelim">Preliminary observations · not yet experimental data</div>
+  <div class="stats telemetry timing">
+    <div class="stat"><div class="lbl">FCP · p75</div><div class="big">−216<span class="u">ms</span></div><div class="what">~23% faster (727 vs 943 ms)</div></div>
+    <div class="stat"><div class="lbl">LCP · p75</div><div class="big">−246<span class="u">ms</span></div><div class="what">~21% faster (900 vs 1,146 ms)</div></div>
+  </div>
+  <p class="stat-note">Foreground top-level loads served from prefetch (~136k) vs loads with eligible rules that were not served (~152k). Firefox Nightly desktop, Oct 30 – Nov 12 2026. Observational: served navigations are same-origin and may differ in other ways.</p>
 </section>
 
 <!-- 7. Demo divider -->
@@ -392,8 +417,16 @@ body.nocursor { cursor: none; }
   <div class="hev3">
     <div class="name-lg">Happy Eyeballs v3 <span class="pill ship">Rolling out to Release</span></div>
     <div class="hev3-grid">
-      <div><div class="k">Origin</div><p>IETF <strong>HAPPY</strong> working group draft, with authors from Apple and Google.</p></div>
-      <div><div class="k">What’s new</div><p>v1 and v2 raced IPv6 against IPv4.<br>v3 also races <strong>QUIC vs TCP</strong>, found via <strong>HTTPS DNS records</strong>.</p></div>
+      <div><div class="k">What it is</div>
+        <p>The browser’s algorithm for picking how to connect to a server.</p>
+        <p class="hev3-sub">An IETF <strong>HAPPY</strong> working group draft, with authors from Apple and Google. v1 and v2 raced IPv6 against IPv4.</p></div>
+      <div><div class="k">What it aims to do</div>
+        <ul class="hev3-aims">
+          <li>Race <strong>QUIC vs TCP</strong>, not just IPv6 vs IPv4</li>
+          <li>Find HTTP/3 early via <strong>HTTPS DNS records</strong></li>
+          <li>Fall back fast when a path is broken or blocked</li>
+          <li>Make turning on HTTP/3 <strong>safe</strong> for sites</li>
+        </ul></div>
     </div>
     <div class="refs"><a href="https://datatracker.ietf.org/doc/draft-ietf-happy-happyeyeballs-v3/">draft-ietf-happy-happyeyeballs-v3</a><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1953459">bug 1953459</a></div>
   </div>
