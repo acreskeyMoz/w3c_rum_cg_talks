@@ -70,6 +70,7 @@ code { font-family: var(--mono); font-size: .9em; background: var(--lilac-2); pa
 .cover .presenters .org { font-size: 30px; opacity: .9; }
 
 /* ---------- section divider ---------- */
+.devtools-shot { display: block; width: 100%; height: auto; margin-top: 56px; border: 2px solid var(--rule); border-radius: 12px; box-shadow: 0 12px 40px rgba(43,11,82,.12); }
 .divider h1 { font-size: 150px; line-height: 1.02; margin-top: 70px; max-width: 1600px; }
 .divider .lead { font-size: 40px; line-height: 1.35; margin-top: auto; margin-bottom: 110px; max-width: 1300px; opacity: .92; }
 
@@ -337,10 +338,12 @@ body.nocursor { cursor: none; }
 </section>
 
 <!-- 7. Demo divider -->
-<section class="slide violet divider" data-section="03 · Speculation Rules">
+<section class="slide" data-section="03 · Speculation Rules">
   <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
-  <h1>DevTools demo</h1>
-  <p class="lead">Speculation Rules prefetch in Firefox Nightly, and spotting <code>navigational-prefetch</code> in the timeline.</p>
+  <h2>Speculative Loads in DevTools</h2>
+  <p class="chart-sub">Application panel → Speculative Loads: whether this navigation used a prefetch, and the speculations this page started.</p>
+  <img class="devtools-shot" src="img/devtools-speculative-loads.png" alt="Firefox DevTools Application panel, Speculative Loads section. Status: Navigation used a prefetched document response. Speculations initiated by this page: one symfony.com blog URL, action Prefetch, status Success.">
+  <div class="rum"><div class="lbl">Try it</div><p>For now, turn on <code>devtools.application.speculativeLoads</code> in <code>about:config</code>.</p></div>
 </section>
 
 <!-- 9. Section 4 -->
