@@ -129,19 +129,24 @@ code { font-family: var(--mono); font-size: .9em; background: var(--lilac-2); pa
 .thanks .big { font-size: 320px; line-height: .9; margin-top: auto; margin-left: -10px; letter-spacing: -0.03em; }
 .thanks .links { font-size: 30px; line-height: 1.6; margin: 40px 0 110px; opacity: .9; }
 
-/* ---------- text + screenshot split (HEv3) ---------- */
-.split { display: grid; grid-template-columns: 1fr 660px; gap: 72px; margin-top: 40px; flex: 1; min-height: 0; padding-bottom: 64px; }
-.split-text { display: flex; flex-direction: column; border-top: 2px solid var(--rule); padding-top: 28px; }
-.name-lg { font-size: 42px; font-weight: 600; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+/* ---------- HEv3 ---------- */
+.hev3 { margin-top: 48px; border-top: 2px solid var(--rule); padding-top: 32px; }
+.name-lg { font-size: 46px; font-weight: 600; display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
 .name-lg .pill { margin-top: 0; }
-.lede { font-size: 31px; line-height: 1.42; margin-top: 26px; }
-.split-text .refs { margin-top: 22px; font-size: 22px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 26px; }
-.split-text .refs a { font-family: var(--mono); }
-.split-text .rum { margin-bottom: 0; grid-template-columns: 1fr; gap: 10px; }
-.shot { display: flex; flex-direction: column; min-height: 0; }
-.shot a { display: block; min-height: 0; flex: 1; }
-.shot img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: top; border-radius: 14px; box-shadow: 0 2px 0 var(--rule), 0 18px 48px rgba(43,11,82,.18); background: #fff; }
-.shot figcaption { font-size: 22px; color: var(--muted); margin-top: 18px; }
+.k { font-size: 22px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--violet); }
+.hev3-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 44px; }
+.hev3-grid p { font-size: 34px; line-height: 1.42; margin-top: 14px; }
+.hev3 .refs { margin-top: 36px; font-size: 23px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 28px; }
+.hev3 .refs a { font-family: var(--mono); }
+
+/* ---------- talk pointer ---------- */
+.talk { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 760px; gap: 80px; align-items: center; padding-bottom: 60px; }
+.talk-title { font-family: var(--head); font-size: 76px; line-height: 1.1; margin-top: 22px; }
+.talk-who { font-size: 38px; margin-top: 40px; }
+.talk-where { font-size: 32px; color: var(--muted); margin-top: 10px; }
+.talk-link { font-size: 28px; margin-top: 30px; font-family: var(--mono); }
+.talk-shot { display: flex; justify-content: flex-end; align-items: center; min-height: 0; }
+.talk-shot img { display: block; width: auto; height: auto; max-width: 100%; max-height: 800px; border-radius: 16px; box-shadow: 0 18px 48px rgba(43,11,82,.2); }
 
 /* ---------- WPT chart ---------- */
 .chart-sub { font-size: 28px; color: var(--muted); margin-top: 14px; }
@@ -359,18 +364,29 @@ body.nocursor { cursor: none; }
 <section class="slide" data-section="05 · Connections">
   <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
   <h2><span class="idx">05</span>Faster connection establishment</h2>
-  <div class="split">
-    <div class="split-text">
-      <div class="name-lg">Happy Eyeballs v3 <span class="pill ship">Rolling out to Release</span></div>
-      <p class="lede">An IETF draft from the <strong>HAPPY</strong> working group, by Tommy Pauly (Apple) and David Schinazi, Nidhi Jaju &amp; Kenichi Ishibashi (Google).</p>
-      <p class="lede">It builds on RFC&nbsp;6555 and RFC&nbsp;8305, which raced IPv6 against IPv4. v3 also races <strong>QUIC against TCP</strong> and uses <strong>HTTPS DNS records</strong> to discover HTTP/3.</p>
-      <div class="refs"><a href="https://datatracker.ietf.org/doc/draft-ietf-happy-happyeyeballs-v3/">draft-ietf-happy-happyeyeballs-v3</a><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1953459">bug 1953459</a></div>
-      <div class="rum"><div class="lbl">RUM relevance</div><p>Use <code>nextHopProtocol</code> with DNS and connection timings to assess connection costs and HTTP/3 adoption.</p></div>
+  <div class="hev3">
+    <div class="name-lg">Happy Eyeballs v3 <span class="pill ship">Rolling out to Release</span></div>
+    <div class="hev3-grid">
+      <div><div class="k">Origin</div><p>IETF draft from the <strong>HAPPY</strong> working group, by Tommy Pauly (Apple) and David Schinazi, Nidhi Jaju &amp; Kenichi Ishibashi (Google).</p></div>
+      <div><div class="k">What’s new</div><p>v1 and v2 (RFC&nbsp;6555, RFC&nbsp;8305) raced IPv6 against IPv4. v3 also races <strong>QUIC against TCP</strong> and uses <strong>HTTPS DNS records</strong> to discover HTTP/3.</p></div>
     </div>
-    <figure class="shot">
-      <a href="https://perfnow.nl/speakers.html#max"><img src="img/perfnow-hev3.jpg" alt="performance.now() 2026 speaker page: Max Inden (Mozilla), 'Save a round trip: optimizing for IETF's Happy Eyeballs v3'"></a>
-      <figcaption>Max’s talk at <strong>performance.now()</strong>, Amsterdam, 19–20 Nov</figcaption>
-    </figure>
+    <div class="refs"><a href="https://datatracker.ietf.org/doc/draft-ietf-happy-happyeyeballs-v3/">draft-ietf-happy-happyeyeballs-v3</a><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1953459">bug 1953459</a></div>
+  </div>
+  <div class="rum"><div class="lbl">RUM relevance</div><p>Use <code>nextHopProtocol</code> with DNS and connection timings to assess connection costs and HTTP/3 adoption.</p></div>
+</section>
+
+<!-- 10b. Max's talk -->
+<section class="slide lilac" data-section="05 · Connections">
+  <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
+  <div class="talk">
+    <div class="talk-text">
+      <div class="k">The deep dive</div>
+      <p class="talk-title">Save a round trip: optimizing for IETF’s Happy Eyeballs v3</p>
+      <p class="talk-who"><strong>Max Inden</strong>, Mozilla</p>
+      <p class="talk-where">performance.now() · Amsterdam · 19–20 Nov 2026</p>
+      <p class="talk-link"><a href="https://perfnow.nl/speakers.html#max">perfnow.nl/speakers</a></p>
+    </div>
+    <a class="talk-shot" href="https://perfnow.nl/speakers.html#max"><img src="img/perfnow-hev3.jpg" alt="performance.now() 2026 speaker page: Max Inden (Mozilla), 'Save a round trip: optimizing for IETF's Happy Eyeballs v3'"></a>
   </div>
 </section>
 
