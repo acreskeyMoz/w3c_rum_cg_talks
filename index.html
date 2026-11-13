@@ -180,6 +180,10 @@ code { font-family: var(--mono); font-size: .9em; background: var(--lilac-2); pa
 .ask img { width: 128px; height: 128px; border-radius: 50%; object-fit: cover; flex: none; }
 .ask-q { font-family: var(--head); font-size: 56px; line-height: 1.1; color: var(--violet); }
 .ask-who { font-size: 26px; margin-top: 8px; color: var(--muted); }
+.h3-solo { margin-top: auto; margin-bottom: auto; border-left: 8px solid var(--violet); padding-left: 56px; }
+.h3-hero { font-family: var(--head); font-size: 220px; line-height: 1; letter-spacing: -0.02em; color: var(--violet); margin-top: 24px; }
+.h3-line { font-size: 44px; line-height: 1.3; margin-top: 36px; max-width: 1400px; }
+.h3-next { font-size: 32px; color: var(--muted); margin-top: 28px; }
 .h3-win { margin-top: auto; margin-bottom: 72px; background: var(--lilac); border-radius: 18px; padding: 32px 48px; display: flex; align-items: center; gap: 48px; }
 .h3-big { font-family: var(--head); font-size: 88px; white-space: nowrap; line-height: 1; color: var(--violet); letter-spacing: -0.02em; }
 .h3-txt { font-size: 34px; line-height: 1.3; }
@@ -266,17 +270,6 @@ body.nocursor { cursor: none; }
   </div>
 </section>
 
-<!-- 3. Shipping at a glance -->
-<section class="slide night" data-section="Overview">
-  <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
-  <h2>Shipped in Release this year</h2>
-  <div class="stats">
-    <div class="stat"><div class="lbl">Firefox</div><div class="big">149</div><div class="what">Reporting API</div><div class="sub">Collect reports from real users</div></div>
-    <div class="stat"><div class="lbl">Firefox</div><div class="big">160</div><div class="what"><code>blocking="render"</code></div><div class="sub">Choose what blocks first render</div></div>
-    <div class="stat"><div class="lbl">Firefox</div><div class="big">161</div><div class="what">Compression Dictionary Transport on by default</div><div class="sub">Shared dictionaries shrink transfers</div></div>
-  </div>
-</section>
-
 <!-- 4. Section 1 -->
 <section class="slide" data-section="01 · Measuring more">
   <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
@@ -342,8 +335,8 @@ body.nocursor { cursor: none; }
   <h2><span class="idx">03</span>Speculation Rules prefetch</h2>
   <div class="rows">
     <div class="row">
-      <div><div class="name">Same-origin prefetch</div><span class="pill night">Nightly</span></div>
-      <div><div class="body">Rule parsing, navigation reuse, eagerness levels, and HTTP-header support.</div>
+      <div><div class="name">Same-origin prefetch</div><span class="pill night">Nightly · desktop</span></div>
+      <div><div class="body">Prefetch <strong>immediately</strong>, on <strong>hover</strong>, or on <strong>click</strong>.</div>
         <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1969396">bug 1969396</a></div></div>
     </div>
     <div class="row">
@@ -352,7 +345,7 @@ body.nocursor { cursor: none; }
         <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2041381">bug 2041381</a></div></div>
     </div>
   </div>
-  <svg class="flow" viewBox="0 0 1696 262" role="img" aria-label="How Speculation Rules prefetch works: the page declares rules, the user hovers a link, Firefox prefetches the next document in the background, and the click navigates instantly from the prefetch."><rect x="0" y="0" width="300" height="178" rx="18" fill="#f4ecf9"/><rect x="465" y="0" width="300" height="178" rx="18" fill="#f4ecf9"/><rect x="930" y="0" width="300" height="178" rx="18" fill="#f4ecf9"/><rect x="1395" y="0" width="300" height="178" rx="18" fill="#f4ecf9"/><rect x="90.0" y="14" width="120" height="150" rx="10" fill="#fff" stroke="#b9a2f0" stroke-width="2.5"/><rect x="102.0" y="30" width="96" height="12" rx="3" fill="#e8e3ef"/><rect x="102.0" y="56" width="96" height="56" rx="6" fill="#ede4fb" stroke="#7542e5" stroke-width="2"/><text x="150.0" y="96" text-anchor="middle" class="flow-code">{ }</text><rect x="102.0" y="126" width="70" height="10" rx="3" fill="#e8e3ef"/><rect x="102.0" y="144" width="84" height="10" rx="3" fill="#e8e3ef"/><rect x="555.0" y="14" width="120" height="150" rx="10" fill="#fff" stroke="#b9a2f0" stroke-width="2.5"/><rect x="567.0" y="30" width="96" height="12" rx="3" fill="#e8e3ef"/><rect x="567.0" y="60" width="80" height="10" rx="3" fill="#e8e3ef"/><path d="M567.0 96 H645.0" stroke="#7542e5" stroke-width="5" stroke-linecap="round"/><rect x="567.0" y="122" width="96" height="10" rx="3" fill="#e8e3ef"/><path transform="translate(625.0,88)" d="M0 0 L0 40 L11 30 L19 48 L27 44 L19 27 L34 27 Z" fill="#2b0b52" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/><rect x="1020.0" y="14" width="120" height="150" rx="10" fill="#fff" stroke="#7542e5" stroke-width="2.5" stroke-dasharray="9 7"/><path d="M1080.0 40 V104" stroke="#7542e5" stroke-width="6" stroke-linecap="round"/><path d="M1058.0 84 L1080.0 108 L1102.0 84" fill="none" stroke="#7542e5" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><rect x="1034.0" y="132" width="92" height="12" rx="6" fill="#e8e3ef"/><rect x="1034.0" y="132" width="60" height="12" rx="6" fill="#7542e5"/><rect x="1485.0" y="14" width="120" height="150" rx="10" fill="#fff" stroke="#7542e5" stroke-width="2.5"/><rect x="1497.0" y="30" width="96" height="12" rx="3" fill="#7542e5"/><path transform="translate(1523.0,56)" d="M26 0 L0 50 H20 L14 92 L46 34 H25 L34 0 Z" fill="#7542e5"/><path d="M324 89 H437" stroke="#2b0b52" stroke-width="4" stroke-linecap="round"/><path d="M425 77 L441 89 L425 101" fill="none" stroke="#2b0b52" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M789 89 H902" stroke="#2b0b52" stroke-width="4" stroke-linecap="round"/><path d="M890 77 L906 89 L890 101" fill="none" stroke="#2b0b52" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M1254 89 H1367" stroke="#2b0b52" stroke-width="4" stroke-linecap="round"/><path d="M1355 77 L1371 89 L1355 101" fill="none" stroke="#2b0b52" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><text x="150.0" y="222" text-anchor="middle" class="flow-c">Page declares rules</text><text x="150.0" y="254" text-anchor="middle" class="flow-s">via script tag or HTTP header</text><text x="615.0" y="222" text-anchor="middle" class="flow-c">User hovers a link</text><text x="615.0" y="254" text-anchor="middle" class="flow-s">or presses it</text><text x="1080.0" y="222" text-anchor="middle" class="flow-c">Firefox prefetches</text><text x="1080.0" y="254" text-anchor="middle" class="flow-s">the next document in the background</text><text x="1545.0" y="222" text-anchor="middle" class="flow-c">Click: instant</text><text x="1545.0" y="254" text-anchor="middle" class="flow-s">served from the prefetch</text></svg>
+  <svg class="flow" viewBox="0 0 1696 262" role="img" aria-label="How Speculation Rules prefetch works: the page declares rules, a rule triggers immediately, on hover or on click, Firefox prefetches the next document in the background, and the click navigates instantly from the prefetch."><rect x="0" y="0" width="300" height="178" rx="18" fill="#f4ecf9"/><rect x="465" y="0" width="300" height="178" rx="18" fill="#f4ecf9"/><rect x="930" y="0" width="300" height="178" rx="18" fill="#f4ecf9"/><rect x="1395" y="0" width="300" height="178" rx="18" fill="#f4ecf9"/><rect x="90.0" y="14" width="120" height="150" rx="10" fill="#fff" stroke="#b9a2f0" stroke-width="2.5"/><rect x="102.0" y="30" width="96" height="12" rx="3" fill="#e8e3ef"/><rect x="102.0" y="56" width="96" height="56" rx="6" fill="#ede4fb" stroke="#7542e5" stroke-width="2"/><text x="150.0" y="96" text-anchor="middle" class="flow-code">{ }</text><rect x="102.0" y="126" width="70" height="10" rx="3" fill="#e8e3ef"/><rect x="102.0" y="144" width="84" height="10" rx="3" fill="#e8e3ef"/><rect x="555.0" y="14" width="120" height="150" rx="10" fill="#fff" stroke="#b9a2f0" stroke-width="2.5"/><rect x="567.0" y="30" width="96" height="12" rx="3" fill="#e8e3ef"/><rect x="567.0" y="60" width="80" height="10" rx="3" fill="#e8e3ef"/><path d="M567.0 96 H645.0" stroke="#7542e5" stroke-width="5" stroke-linecap="round"/><rect x="567.0" y="122" width="96" height="10" rx="3" fill="#e8e3ef"/><path transform="translate(625.0,88)" d="M0 0 L0 40 L11 30 L19 48 L27 44 L19 27 L34 27 Z" fill="#2b0b52" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/><rect x="1020.0" y="14" width="120" height="150" rx="10" fill="#fff" stroke="#7542e5" stroke-width="2.5" stroke-dasharray="9 7"/><path d="M1080.0 40 V104" stroke="#7542e5" stroke-width="6" stroke-linecap="round"/><path d="M1058.0 84 L1080.0 108 L1102.0 84" fill="none" stroke="#7542e5" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><rect x="1034.0" y="132" width="92" height="12" rx="6" fill="#e8e3ef"/><rect x="1034.0" y="132" width="60" height="12" rx="6" fill="#7542e5"/><rect x="1485.0" y="14" width="120" height="150" rx="10" fill="#fff" stroke="#7542e5" stroke-width="2.5"/><rect x="1497.0" y="30" width="96" height="12" rx="3" fill="#7542e5"/><path transform="translate(1523.0,56)" d="M26 0 L0 50 H20 L14 92 L46 34 H25 L34 0 Z" fill="#7542e5"/><path d="M324 89 H437" stroke="#2b0b52" stroke-width="4" stroke-linecap="round"/><path d="M425 77 L441 89 L425 101" fill="none" stroke="#2b0b52" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M789 89 H902" stroke="#2b0b52" stroke-width="4" stroke-linecap="round"/><path d="M890 77 L906 89 L890 101" fill="none" stroke="#2b0b52" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M1254 89 H1367" stroke="#2b0b52" stroke-width="4" stroke-linecap="round"/><path d="M1355 77 L1371 89 L1355 101" fill="none" stroke="#2b0b52" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><text x="150.0" y="222" text-anchor="middle" class="flow-c">Page declares rules</text><text x="150.0" y="254" text-anchor="middle" class="flow-s">script tag or HTTP header</text><text x="615.0" y="222" text-anchor="middle" class="flow-c">Rule triggers</text><text x="615.0" y="254" text-anchor="middle" class="flow-s">immediately, on hover, or on click</text><text x="1080.0" y="222" text-anchor="middle" class="flow-c">Firefox prefetches</text><text x="1080.0" y="254" text-anchor="middle" class="flow-s">the next document in the background</text><text x="1545.0" y="222" text-anchor="middle" class="flow-c">Click: instant</text><text x="1545.0" y="254" text-anchor="middle" class="flow-s">served from the prefetch</text></svg>
 </section>
 
 <!-- 6a. Prefetch telemetry -->
@@ -404,9 +397,17 @@ body.nocursor { cursor: none; }
     </div>
     <div class="refs"><a href="https://datatracker.ietf.org/doc/draft-ietf-happy-happyeyeballs-v3/">draft-ietf-happy-happyeyeballs-v3</a><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1953459">bug 1953459</a></div>
   </div>
-  <div class="h3-win">
-    <div class="h3-big">More HTTP/3</div>
-    <div class="h3-txt">Early results from our in-progress Release A/B experiment show more page loads over HTTP/3.<span class="h3-detail">Details in Max’s talk, next.</span></div>
+</section>
+
+<!-- 10a. HEv3 early result -->
+<section class="slide" data-section="04 · Connections">
+  <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
+  <h2><span class="idx">04</span>Faster connection establishment</h2>
+  <div class="h3-solo">
+    <div class="k">Early result · Release A/B experiment, in progress</div>
+    <div class="h3-hero">More HTTP/3</div>
+    <p class="h3-line">With Happy Eyeballs v3, more Firefox page loads use HTTP/3.</p>
+    <p class="h3-next">Details in Max’s talk →</p>
   </div>
 </section>
 
