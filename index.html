@@ -14,9 +14,9 @@
   --lilac: #f4ecf9;
   --lilac-2: #e6d6f7;
   --violet: #7542e5;
-  --violet-hi: #a685ff;
+  --violet-hi: #cdb9ff;
   --night: #2b0b52;
-  --night-line: rgba(255,255,255,.22);
+  --night-line: rgba(255,255,255,.4);
   --rule: #b9a2f0;
   --muted: #55506a;
   --head: "Mozilla Headline", "Zilla Slab", Georgia, serif;
@@ -46,8 +46,8 @@ body { font-family: var(--text); color: var(--ink); -webkit-font-smoothing: anti
 .chrome { height: 120px; flex: none; display: flex; align-items: center; justify-content: space-between; font-size: 22px; letter-spacing: .01em; }
 .chrome .left { display: flex; align-items: center; gap: 28px; }
 .chrome img { width: 44px; height: 44px; }
-.chrome .section { font-weight: 600; opacity: .75; }
-.chrome .num { font-variant-numeric: tabular-nums; opacity: .6; }
+.chrome .section { font-weight: 600; opacity: .9; }
+.chrome .num { font-variant-numeric: tabular-nums; opacity: .8; }
 
 h1, h2, .big { font-family: var(--head); font-weight: 400; letter-spacing: -0.01em; font-feature-settings: "zero" 1; }
 h2 { font-size: 76px; line-height: 1.08; margin-top: 36px; }
@@ -61,13 +61,13 @@ code { font-family: var(--mono); font-size: .9em; background: var(--lilac-2); pa
 
 /* ---------- cover ---------- */
 .cover { justify-content: flex-start; }
-.cover .event { font-size: 30px; font-weight: 600; letter-spacing: .02em; color: var(--violet-hi); margin-top: 90px; }
+.cover .event { font-size: 34px; font-weight: 600; letter-spacing: .02em; color: var(--violet-hi); margin-top: 90px; }
 .cover .title { font-size: 132px; line-height: 1.04; letter-spacing: -0.02em; margin-top: 36px; max-width: 1640px; }
-.cover .title span { color: var(--violet-hi); }
+.cover .title span { color: inherit; }
 .cover .presenters { list-style: none; display: flex; gap: 120px; margin-top: auto; margin-bottom: 110px; }
 .cover .presenters li { border-top: 2px solid var(--night-line); padding-top: 22px; min-width: 440px; display: flex; flex-direction: column; gap: 6px; }
 .cover .presenters .who { font-size: 40px; font-weight: 600; }
-.cover .presenters .org { font-size: 28px; opacity: .75; }
+.cover .presenters .org { font-size: 30px; opacity: .9; }
 
 /* ---------- section divider ---------- */
 .divider h1 { font-size: 150px; line-height: 1.02; margin-top: 70px; max-width: 1600px; }
