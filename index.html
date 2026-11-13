@@ -327,20 +327,6 @@ body.nocursor { cursor: none; }
   <p class="lead">Speculation Rules prefetch in Firefox Nightly, and spotting <code>navigational-prefetch</code> in the timeline.</p>
 </section>
 
-<!-- 8. Don't UA-gate -->
-<section class="slide night statement" data-section="03 · Speculation Rules">
-  <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
-  <p class="say">Please don’t gate speculation rules on <em>User Agent</em>. Detect the web API instead.</p>
-  <div class="codepair">
-    <figure class="bad"><figcaption>Avoid</figcaption><pre>if (/Chrome/.test(navigator.userAgent)) {
-  addSpeculationRules();
-}</pre></figure>
-    <figure class="good"><figcaption>Prefer</figcaption><pre>if (HTMLScriptElement.supports?.("speculationrules")) {
-  addSpeculationRules();
-}</pre></figure>
-  </div>
-</section>
-
 <!-- 9. Section 4 -->
 <section class="slide" data-section="04 · Repeat visits">
   <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
