@@ -322,19 +322,15 @@ body.nocursor { cursor: none; }
 <!-- 6b. WPT progress chart -->
 <section class="slide" data-section="03 · Speculation Rules">
   <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
-  <h2>Firefox prefetch progress on WPT</h2>
-  <p class="chart-sub">Share of subtests passing in <code>/speculation-rules/prefetch</code>, experimental runs on <a href="https://wpt.fyi/results/speculation-rules/prefetch?label=experimental&amp;label=master&amp;product=firefox&amp;product=firefox_android">wpt.fyi</a></p>
+  <h2>Firefox desktop prefetch progress on WPT</h2>
+  <p class="chart-sub">Share of subtests passing in <code>/speculation-rules/prefetch</code>, experimental runs on <a href="https://wpt.fyi/results/speculation-rules/prefetch?label=experimental&amp;label=master&amp;product=firefox">wpt.fyi</a></p>
   <div class="chart-wrap">
-    <ul class="legend" aria-hidden="true">
-      <li><svg width="44" height="14"><line x1="2" y1="7" x2="42" y2="7" stroke="#7542e5" stroke-width="4" stroke-linecap="round"/></svg>Firefox</li>
-      <li><svg width="44" height="14"><line x1="2" y1="7" x2="42" y2="7" stroke="#7542e5" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 7"/></svg>Firefox Android</li>
-    </ul>
     <svg id="wpt-chart" viewBox="0 0 1696 600" role="img" aria-labelledby="wpt-desc"><desc id="wpt-desc">Line chart of WPT prefetch pass rate, August to November 2026.</desc></svg>
     <div id="wpt-tip" class="tip" hidden></div>
     <table id="wpt-table" class="sr-only"><caption>WPT /speculation-rules/prefetch subtests passing</caption><thead><tr><th>Browser</th><th>Date</th><th>Passing</th><th>Total</th></tr></thead><tbody></tbody></table>
   </div>
-  <p class="chart-note">Results begin Aug 2026, when these tests started running in Firefox CI (Android: Sep 2026). Weekly samples.</p>
-  <script type="application/json" id="wpt-data">{"firefox":[["2026-08-04",84,244],["2026-08-11",85,244],["2026-08-18",85,244],["2026-08-25",85,244],["2026-09-01",85,244],["2026-09-08",85,244],["2026-09-15",86,245],["2026-09-22",94,249],["2026-09-29",95,249],["2026-10-06",121,249],["2026-10-13",130,250],["2026-10-20",149,250],["2026-10-27",153,250],["2026-11-03",157,261],["2026-11-10",183,261],["2026-11-13",196,265]],"firefox_android":[["2026-09-29",95,249],["2026-09-30",95,249],["2026-10-08",132,249],["2026-10-19",149,250],["2026-10-27",153,250],["2026-11-03",156,259],["2026-11-06",164,261],["2026-11-13",194,263]]}</script>
+  <p class="chart-note">Speculation Rules is currently enabled only in Firefox desktop. Results begin Aug 2026, when these tests started running in Firefox CI. Weekly samples.</p>
+  <script type="application/json" id="wpt-data">{"firefox":[["2026-08-04",84,244],["2026-08-11",85,244],["2026-08-18",85,244],["2026-08-25",85,244],["2026-09-01",85,244],["2026-09-08",85,244],["2026-09-15",86,245],["2026-09-22",94,249],["2026-09-29",95,249],["2026-10-06",121,249],["2026-10-13",130,250],["2026-10-20",149,250],["2026-10-27",153,250],["2026-11-03",157,261],["2026-11-10",183,261],["2026-11-13",196,265]]}</script>
 </section>
 
 <!-- 7. Demo divider -->
@@ -570,7 +566,6 @@ body.nocursor { cursor: none; }
     const raw = JSON.parse(document.getElementById('wpt-data').textContent);
     const SERIES = [
       { key: 'firefox', name: 'Firefox', color: '#7542e5', dash: null, w: 5 },
-      { key: 'firefox_android', name: 'Firefox Android', color: '#7542e5', dash: '10 9', w: 4 },
     ];
     const W = 1696, H = 600, L = 70, R = 330, T = 16, B = 50;
     const t0 = Date.parse('2026-07-25'), t1 = Date.parse('2026-11-20');
