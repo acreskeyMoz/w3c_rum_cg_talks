@@ -49,6 +49,14 @@ body { font-family: var(--text); color: var(--ink); -webkit-font-smoothing: anti
 .chrome .section { font-weight: 600; opacity: .9; }
 .chrome .num { font-variant-numeric: tabular-nums; opacity: .8; }
 
+/* speculation-rules section banner */
+.slide.spec .chrome { background: var(--violet); color: #fff; margin: 0 -112px; padding: 0 112px; height: 100px; }
+.slide.spec .chrome .section { font-size: 30px; font-weight: 700; opacity: 1; letter-spacing: .02em; }
+.slide.spec .chrome .num { opacity: 1; }
+.flow { width: 100%; height: auto; margin-top: auto; margin-bottom: 64px; }
+.flow-c { font-family: var(--text); font-size: 28px; font-weight: 600; fill: #2b0b52; }
+.flow-s { font-family: var(--text); font-size: 22px; fill: #55506a; }
+.flow-code { font-family: var(--mono); font-size: 34px; font-weight: 700; fill: #7542e5; }
 h1, h2, .big { font-family: var(--head); font-weight: 400; letter-spacing: -0.01em; font-feature-settings: "zero" 1; }
 h2 { font-size: 76px; line-height: 1.08; margin-top: 36px; }
 h2 .idx { color: var(--violet); margin-right: 28px; }
@@ -115,11 +123,16 @@ code { font-family: var(--mono); font-size: .9em; background: var(--lilac-2); pa
 .stat .lbl { font-size: 24px; color: var(--violet-hi); font-weight: 600; letter-spacing: .02em; }
 .stat .big { font-size: 190px; line-height: 1; margin: 10px 0 16px; }
 .stat .what { font-size: 30px; line-height: 1.3; }
+.stat .sub { font-size: 27px; line-height: 1.35; margin-top: 12px; color: var(--violet-hi); opacity: 1; }
 .slide:not(.night) .stat { border-top-color: var(--rule); }
 .slide:not(.night) .stat .lbl { color: var(--violet); }
 .stats.telemetry { margin-top: 72px; margin-bottom: 0; grid-template-columns: repeat(3, 1fr); }
 .stats.telemetry .big { font-size: 160px; }
 .stats.telemetry .what { font-size: 29px; }
+.stat .split { display: flex; flex-direction: column; gap: 14px; margin: 18px 0 18px; }
+.stat .split > div { display: flex; align-items: baseline; gap: 20px; }
+.stat .mid { font-size: 84px; line-height: 1; min-width: 250px; }
+.stat .via { font-size: 30px; line-height: 1.3; white-space: nowrap; }
 .stat-note { margin-top: auto; margin-bottom: 72px; font-size: 22px; line-height: 1.4; color: var(--muted); max-width: 1500px; }
 
 /* ---------- statement slide ---------- */
@@ -133,8 +146,9 @@ code { font-family: var(--mono); font-size: .9em; background: var(--lilac-2); pa
 .codepair pre { font-family: var(--mono); font-size: 27px; line-height: 1.5; white-space: pre-wrap; }
 
 /* ---------- thanks ---------- */
-.thanks .big { font-size: 320px; line-height: .9; margin-top: auto; margin-left: -10px; letter-spacing: -0.03em; }
-.thanks .links { font-size: 30px; line-height: 1.6; margin: 40px 0 110px; opacity: .9; }
+.thanks .big { font-size: 210px; line-height: .9; margin-top: auto; margin-left: -10px; letter-spacing: -0.03em; }
+.thanks .find { font-size: 56px; line-height: 1.25; margin-top: 56px; }
+.thanks .links { font-size: 30px; line-height: 1.6; margin: 28px 0 110px; opacity: .9; }
 
 /* ---------- HEv3 ---------- */
 .hev3 { margin-top: 48px; border-top: 2px solid var(--rule); padding-top: 32px; }
@@ -145,6 +159,20 @@ code { font-family: var(--mono); font-size: .9em; background: var(--lilac-2); pa
 .hev3-grid p { font-size: 34px; line-height: 1.42; margin-top: 14px; }
 .hev3 .refs { margin-top: 36px; font-size: 23px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 28px; }
 .hev3 .refs a { font-family: var(--mono); }
+.pill.inline { margin: 0 10px 0 0; vertical-align: 3px; font-size: 16px; padding: 4px 11px 3px; }
+.tao2 { margin-top: 8px; }
+.rows.viz .row { grid-template-columns: 560px 1fr 240px; align-items: center; }
+.viz-g { width: 240px; height: 120px; overflow: visible; }
+.viz-t { font-family: var(--text); font-size: 18px; font-weight: 600; fill: #2b0b52; }
+.viz-s { font-family: var(--text); font-size: 18px; fill: #55506a; }
+.ask { margin-top: auto; margin-bottom: 64px; display: flex; align-items: center; gap: 36px; background: var(--lilac); border-radius: 18px; padding: 24px 40px; }
+.ask img { width: 128px; height: 128px; border-radius: 50%; object-fit: cover; flex: none; }
+.ask-q { font-family: var(--head); font-size: 56px; line-height: 1.1; color: var(--violet); }
+.ask-who { font-size: 26px; margin-top: 8px; color: var(--muted); }
+.h3-win { margin-top: auto; margin-bottom: 72px; background: var(--lilac); border-radius: 18px; padding: 32px 48px; display: flex; align-items: center; gap: 48px; }
+.h3-big { font-family: var(--head); font-size: 88px; white-space: nowrap; line-height: 1; color: var(--violet); letter-spacing: -0.02em; }
+.h3-txt { font-size: 34px; line-height: 1.3; }
+.h3-detail { display: block; margin-top: 10px; font-size: 26px; color: var(--muted); }
 
 /* ---------- talk pointer ---------- */
 .talk { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 760px; gap: 80px; align-items: center; padding-bottom: 60px; }
@@ -210,12 +238,12 @@ body.nocursor { cursor: none; }
   <h2>What’s new for RUM in Firefox</h2>
   <ol class="agenda">
     <li><span class="n">01</span><span class="t">Measuring more of the user experience</span><span class="d">Layout Instability, Container Timing, LoAF</span></li>
-    <li><span class="n">05</span><span class="t">Faster connection establishment</span><span class="d">Happy Eyeballs v3</span></li>
+    <li><span class="n">05</span><span class="t">Faster repeat visits, smaller transfers</span><span class="d">No-Vary-Search, Compression Dictionaries</span></li>
     <li><span class="n">02</span><span class="t">Richer Resource &amp; Navigation Timing</span><span class="d">deliveryType, interim responses, TAO fixes</span></li>
     <li><span class="n">06</span><span class="t">Control over the critical rendering path</span><span class="d">blocking="render", imagesrcset preloads</span></li>
     <li><span class="n">03</span><span class="t">Speculation Rules prefetch</span><span class="d">Same-origin prefetch on Nightly</span></li>
     <li><span class="n">07</span><span class="t">Observability beyond successful loads</span><span class="d">Reporting API, Crash Reporting</span></li>
-    <li><span class="n">04</span><span class="t">Faster repeat visits, smaller transfers</span><span class="d">No-Vary-Search, Compression Dictionaries</span></li>
+    <li><span class="n">04</span><span class="t">Faster connection establishment</span><span class="d">Happy Eyeballs v3</span></li>
     <li><span class="n">08</span><span class="t">Performance Timeline quality &amp; interop</span><span class="d">LCP, Event Timing, buffered entries</span></li>
   </ol>
 </section>
@@ -225,9 +253,9 @@ body.nocursor { cursor: none; }
   <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
   <h2>Shipped in Release this year</h2>
   <div class="stats">
-    <div class="stat"><div class="lbl">Firefox</div><div class="big">149</div><div class="what">Reporting API</div></div>
-    <div class="stat"><div class="lbl">Firefox</div><div class="big">160</div><div class="what"><code>blocking="render"</code></div></div>
-    <div class="stat"><div class="lbl">Firefox</div><div class="big">161</div><div class="what">Compression Dictionary Transport on by default</div></div>
+    <div class="stat"><div class="lbl">Firefox</div><div class="big">149</div><div class="what">Reporting API</div><div class="sub">Collect reports from real users</div></div>
+    <div class="stat"><div class="lbl">Firefox</div><div class="big">160</div><div class="what"><code>blocking="render"</code></div><div class="sub">Choose what blocks first render</div></div>
+    <div class="stat"><div class="lbl">Firefox</div><div class="big">161</div><div class="what">Compression Dictionary Transport on by default</div><div class="sub">Shared dictionaries shrink transfers</div></div>
   </div>
 </section>
 
@@ -235,22 +263,29 @@ body.nocursor { cursor: none; }
 <section class="slide" data-section="01 · Measuring more">
   <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
   <h2><span class="idx">01</span>Measuring more of the user experience</h2>
-  <div class="rows">
+  <div class="rows viz">
     <div class="row">
       <div><div class="name">Layout Instability API</div><span class="pill open">Intent to prototype</span></div>
       <div><div class="body">A next step toward measuring layout shifts in Firefox.</div>
         <div class="refs"><a href="https://groups.google.com/a/mozilla.org/g/dev-platform/c/sap7BN5T9bg">dev-platform intent</a><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1651528">bug 1651528</a></div></div>
+      <svg class="viz-g" viewBox="0 0 240 120" role="img" aria-label="A content block shifts down after its first paint"><rect x="6" y="6" width="150" height="108" rx="10" fill="#fff" stroke="#b9a2f0" stroke-width="2"/><rect x="20" y="18" width="122" height="10" rx="3" fill="#e8e3ef"/><rect x="20" y="38" width="122" height="28" rx="5" fill="none" stroke="#7542e5" stroke-width="2" stroke-dasharray="6 5" opacity=".55"/><rect x="20" y="74" width="122" height="28" rx="5" fill="#7542e5"/><path d="M184 40 V92" stroke="#2b0b52" stroke-width="3" stroke-linecap="round"/><path d="M175 83 L184 94 L193 83" fill="none" stroke="#2b0b52" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="196" y="72" class="viz-t">shift</text></svg>
     </div>
     <div class="row">
       <div><div class="name">Container Timing</div><span class="pill night">Behind a pref</span></div>
       <div><div class="body">Measures when meaningful regions of a page paint, beyond whole-page milestones.</div>
         <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1940240">bug 1940240</a></div></div>
+      <svg class="viz-g" viewBox="0 0 240 120" role="img" aria-label="One region of the page is timed when it paints"><rect x="6" y="6" width="150" height="108" rx="10" fill="#fff" stroke="#b9a2f0" stroke-width="2"/><rect x="20" y="18" width="122" height="10" rx="3" fill="#e8e3ef"/><rect x="20" y="38" width="78" height="64" rx="5" fill="#f4ecf9" stroke="#7542e5" stroke-width="3"/><rect x="106" y="38" width="36" height="64" rx="5" fill="#e8e3ef"/><path d="M98 70 H176" stroke="#7542e5" stroke-width="2" stroke-dasharray="5 5"/><circle cx="204" cy="70" r="24" fill="#fff" stroke="#7542e5" stroke-width="3"/><path d="M204 56 V70 L214 77" fill="none" stroke="#2b0b52" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
     <div class="row">
       <div><div class="name">Long Animation Frames (LoAF)</div><span class="pill open">Follow along</span></div>
       <div><div class="body">Work is tracked in Bugzilla. Follow along and add your use cases.</div>
         <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1348405">bug 1348405</a></div></div>
+      <svg class="viz-g" viewBox="0 0 240 120" role="img" aria-label="A strip of animation frames with one long frame over 50 milliseconds"><rect x="6" y="58" width="20" height="26" rx="4" fill="#cdb9ff"/><rect x="32" y="58" width="20" height="26" rx="4" fill="#cdb9ff"/><rect x="166" y="58" width="20" height="26" rx="4" fill="#cdb9ff"/><rect x="192" y="58" width="20" height="26" rx="4" fill="#cdb9ff"/><rect x="218" y="58" width="20" height="26" rx="4" fill="#cdb9ff"/><rect x="58" y="58" width="102" height="26" rx="4" fill="#7542e5"/><path d="M58 96 V104 H160 V96" fill="none" stroke="#2b0b52" stroke-width="2"/><text x="109" y="44" text-anchor="middle" class="viz-t">long frame</text><text x="109" y="122" text-anchor="middle" class="viz-s">&gt; 50 ms</text></svg>
     </div>
+  </div>
+  <div class="ask">
+    <img src="img/bas-schouten.jpg" alt="Bas Schouten">
+    <div><div class="ask-q">Questions? Ask Bas</div><div class="ask-who">Bas Schouten, Mozilla · owner of all three bugs</div></div>
   </div>
 </section>
 
@@ -270,26 +305,21 @@ body.nocursor { cursor: none; }
         <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2006340">bug 2006340</a></div></div>
     </div>
     <div class="row">
-      <div><div class="name">TAO across redirects</div><span class="pill ship">Fixed</span></div>
-      <div><div class="body">TAO-protected attributes are no longer exposed when a redirect hop fails the TAO check.</div>
-        <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2085747">bug 2085747</a></div></div>
+      <div><div class="name">Timing-Allow-Origin &amp; redirects</div></div>
+      <div><div class="body"><span class="pill ship inline">Fixed</span> Protected attributes are hidden when a redirect hop fails the TAO check.</div>
+        <div class="body tao2"><span class="pill night inline">In progress</span> Opt-in to redirect visibility via TAO on the destination.</div>
+        <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2085747">bug 2085747</a><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2049166">bug 2049166</a></div></div>
     </div>
     <div class="row">
       <div><div class="name"><code>resourcetimingbufferfull</code></div><span class="pill ship">Fixed</span></div>
       <div><div class="body">The event no longer bubbles, matching the spec and other browsers.</div>
         <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2087563">bug 2087563</a></div></div>
     </div>
-    <div class="row">
-      <div><div class="name">Navigation redirect visibility</div><span class="pill open">Open</span></div>
-      <div><div class="body">Opt-in to redirect visibility via Timing-Allow-Origin on the destination origin.</div>
-        <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2049166">bug 2049166</a></div></div>
-    </div>
   </div>
-  <div class="rum"><div class="lbl">RUM relevance</div><p>Better understanding of cache use, interim responses, and cross-origin redirects.</p></div>
 </section>
 
 <!-- 6. Section 3 -->
-<section class="slide" data-section="03 · Speculation Rules">
+<section class="slide spec" data-section="03 · Speculation Rules">
   <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
   <h2><span class="idx">03</span>Speculation Rules prefetch</h2>
   <div class="rows">
@@ -304,23 +334,25 @@ body.nocursor { cursor: none; }
         <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2041381">bug 2041381</a></div></div>
     </div>
   </div>
-  <div class="rum"><div class="lbl">RUM relevance</div><p>Measure the benefit of speculative loading, and tell prefetch-assisted navigations apart from ordinary ones.</p></div>
+  <svg class="flow" viewBox="0 0 1696 262" role="img" aria-label="How Speculation Rules prefetch works: the page declares rules, the user hovers a link, Firefox prefetches the next document in the background, and the click navigates instantly from the prefetch."><rect x="0" y="0" width="300" height="178" rx="18" fill="#f4ecf9"/><rect x="465" y="0" width="300" height="178" rx="18" fill="#f4ecf9"/><rect x="930" y="0" width="300" height="178" rx="18" fill="#f4ecf9"/><rect x="1395" y="0" width="300" height="178" rx="18" fill="#f4ecf9"/><rect x="90.0" y="14" width="120" height="150" rx="10" fill="#fff" stroke="#b9a2f0" stroke-width="2.5"/><rect x="102.0" y="30" width="96" height="12" rx="3" fill="#e8e3ef"/><rect x="102.0" y="56" width="96" height="56" rx="6" fill="#ede4fb" stroke="#7542e5" stroke-width="2"/><text x="150.0" y="96" text-anchor="middle" class="flow-code">{ }</text><rect x="102.0" y="126" width="70" height="10" rx="3" fill="#e8e3ef"/><rect x="102.0" y="144" width="84" height="10" rx="3" fill="#e8e3ef"/><rect x="555.0" y="14" width="120" height="150" rx="10" fill="#fff" stroke="#b9a2f0" stroke-width="2.5"/><rect x="567.0" y="30" width="96" height="12" rx="3" fill="#e8e3ef"/><rect x="567.0" y="60" width="80" height="10" rx="3" fill="#e8e3ef"/><path d="M567.0 96 H645.0" stroke="#7542e5" stroke-width="5" stroke-linecap="round"/><rect x="567.0" y="122" width="96" height="10" rx="3" fill="#e8e3ef"/><path transform="translate(625.0,88)" d="M0 0 L0 40 L11 30 L19 48 L27 44 L19 27 L34 27 Z" fill="#2b0b52" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/><rect x="1020.0" y="14" width="120" height="150" rx="10" fill="#fff" stroke="#7542e5" stroke-width="2.5" stroke-dasharray="9 7"/><path d="M1080.0 40 V104" stroke="#7542e5" stroke-width="6" stroke-linecap="round"/><path d="M1058.0 84 L1080.0 108 L1102.0 84" fill="none" stroke="#7542e5" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><rect x="1034.0" y="132" width="92" height="12" rx="6" fill="#e8e3ef"/><rect x="1034.0" y="132" width="60" height="12" rx="6" fill="#7542e5"/><rect x="1485.0" y="14" width="120" height="150" rx="10" fill="#fff" stroke="#7542e5" stroke-width="2.5"/><rect x="1497.0" y="30" width="96" height="12" rx="3" fill="#7542e5"/><path transform="translate(1523.0,56)" d="M26 0 L0 50 H20 L14 92 L46 34 H25 L34 0 Z" fill="#7542e5"/><path d="M324 89 H437" stroke="#2b0b52" stroke-width="4" stroke-linecap="round"/><path d="M425 77 L441 89 L425 101" fill="none" stroke="#2b0b52" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M789 89 H902" stroke="#2b0b52" stroke-width="4" stroke-linecap="round"/><path d="M890 77 L906 89 L890 101" fill="none" stroke="#2b0b52" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M1254 89 H1367" stroke="#2b0b52" stroke-width="4" stroke-linecap="round"/><path d="M1355 77 L1371 89 L1355 101" fill="none" stroke="#2b0b52" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><text x="150.0" y="222" text-anchor="middle" class="flow-c">Page declares rules</text><text x="150.0" y="254" text-anchor="middle" class="flow-s">via script tag or HTTP header</text><text x="615.0" y="222" text-anchor="middle" class="flow-c">User hovers a link</text><text x="615.0" y="254" text-anchor="middle" class="flow-s">or presses it</text><text x="1080.0" y="222" text-anchor="middle" class="flow-c">Firefox prefetches</text><text x="1080.0" y="254" text-anchor="middle" class="flow-s">the next document in the background</text><text x="1545.0" y="222" text-anchor="middle" class="flow-c">Click: instant</text><text x="1545.0" y="254" text-anchor="middle" class="flow-s">served from the prefetch</text></svg>
 </section>
 
 <!-- 6a. Prefetch telemetry -->
-<section class="slide" data-section="03 · Speculation Rules">
+<section class="slide spec" data-section="03 · Speculation Rules">
   <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
   <h2>What Nightly sees so far</h2>
   <div class="stats telemetry">
     <div class="stat"><div class="lbl">Top-1000 homepages</div><div class="big">~9.2%</div><div class="what">of Tranco top-1000 homepages have speculation rules</div></div>
     <div class="stat"><div class="lbl">All hard navigations</div><div class="big">~3.9%</div><div class="what">of top-level pages ship at least one prefetch rule</div></div>
-    <div class="stat"><div class="lbl">Sent as an HTTP header</div><div class="big">~2.0%</div><div class="what">of pages use the <code style="white-space:nowrap">Speculation-Rules</code> header, vs ~3.6% with a <code>&lt;script&gt;</code> tag</div></div>
+    <div class="stat"><div class="lbl">Delivery method</div>
+      <div class="split"><div><span class="mid">~3.6%</span><span class="via"><code>&lt;script&gt;</code> tag</span></div><div><span class="mid">~2.0%</span><span class="via">HTTP header</span></div></div>
+      <div class="what">of top-level pages, by how rules arrive</div></div>
   </div>
   <p class="stat-note">Homepages: Tranco top-1000 crawl with Firefox Nightly 158.0a1. Telemetry: Firefox Nightly desktop, Oct 30 – Nov 12 2026. Use counters over ~48M top-level pages. A page can deliver rules both ways.</p>
 </section>
 
 <!-- 6b. WPT progress chart -->
-<section class="slide" data-section="03 · Speculation Rules">
+<section class="slide spec" data-section="03 · Speculation Rules">
   <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
   <h2>Firefox desktop prefetch progress on WPT</h2>
   <p class="chart-sub">Share of subtests passing in <code>/speculation-rules/prefetch</code>, experimental runs on <a href="https://wpt.fyi/results/speculation-rules/prefetch?label=experimental&amp;label=master&amp;product=firefox">wpt.fyi</a></p>
@@ -334,7 +366,7 @@ body.nocursor { cursor: none; }
 </section>
 
 <!-- 7. Demo divider -->
-<section class="slide" data-section="03 · Speculation Rules">
+<section class="slide spec" data-section="03 · Speculation Rules">
   <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
   <h2>Speculative Loads in DevTools</h2>
   <p class="chart-sub">Application panel → Speculative Loads: whether this navigation used a prefetch, and the speculations this page started.</p>
@@ -342,13 +374,53 @@ body.nocursor { cursor: none; }
   <div class="rum"><div class="lbl">Try it</div><p>For now, turn on <code>devtools.application.speculativeLoads</code> in <code>about:config</code>.</p></div>
 </section>
 
-<!-- 9. Section 4 -->
-<section class="slide" data-section="04 · Repeat visits">
+<!-- 10. Section 4 -->
+<section class="slide" data-section="04 · Connections">
   <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
-  <h2><span class="idx">04</span>Faster repeat visits, smaller transfers</h2>
+  <h2><span class="idx">04</span>Faster connection establishment</h2>
+  <div class="hev3">
+    <div class="name-lg">Happy Eyeballs v3 <span class="pill ship">Rolling out to Release</span></div>
+    <div class="hev3-grid">
+      <div><div class="k">Origin</div><p>IETF <strong>HAPPY</strong> working group draft, with authors from Apple and Google.</p></div>
+      <div><div class="k">What’s new</div><p>v1 and v2 raced IPv6 against IPv4.<br>v3 also races <strong>QUIC vs TCP</strong>, found via <strong>HTTPS DNS records</strong>.</p></div>
+    </div>
+    <div class="refs"><a href="https://datatracker.ietf.org/doc/draft-ietf-happy-happyeyeballs-v3/">draft-ietf-happy-happyeyeballs-v3</a><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1953459">bug 1953459</a></div>
+  </div>
+  <div class="h3-win">
+    <div class="h3-big">More HTTP/3</div>
+    <div class="h3-txt">Early results from our in-progress Release A/B experiment show more page loads over HTTP/3.<span class="h3-detail">Details in Max’s talk, next.</span></div>
+  </div>
+</section>
+
+<!-- 10b. Max's talk -->
+<section class="slide lilac" data-section="04 · Connections">
+  <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
+  <div class="talk">
+    <div class="talk-text">
+      <div class="k">The deep dive</div>
+      <p class="talk-title">Save a round trip: optimizing for IETF’s Happy Eyeballs v3</p>
+      <p class="talk-who"><strong>Max Inden</strong>, Mozilla</p>
+      <p class="talk-where">performance.now() · Amsterdam<br>Friday 20 Nov 2026 · 11:30</p>
+      <p class="talk-link"><a href="https://perfnow.nl/speakers.html#max">perfnow.nl/speakers</a></p>
+    </div>
+    <a class="talk-shot" href="https://perfnow.nl/speakers.html#max"><img src="img/perfnow-hev3.jpg" alt="performance.now() 2026 speaker page: Max Inden (Mozilla), 'Save a round trip: optimizing for IETF's Happy Eyeballs v3'"></a>
+  </div>
+</section>
+
+<!-- Handoff to Nazim -->
+<section class="slide night divider" data-section="">
+  <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
+  <h1>Over to Nazim</h1>
+  <p class="lead"><strong>Nazim Can Altinova</strong>, Performance Tools, Mozilla</p>
+</section>
+
+<!-- 10c. Section 5 (Nazim) -->
+<section class="slide" data-section="05 · Repeat visits">
+  <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
+  <h2><span class="idx">05</span>Faster repeat visits, smaller transfers</h2>
   <div class="rows">
     <div class="row">
-      <div><div class="name">No-Vary-Search</div><span class="pill ship">Shipped</span></div>
+      <div><div class="name">No-Vary-Search</div><span class="pill ship">Shipped · Firefox 154</span></div>
       <div><div class="body">Cache reuse across URLs whose query parameters do not change the response.</div>
         <div class="refs"><span>Tracking <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1967294">bug 1967294</a></span><span>Release enablement <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2038013">bug 2038013</a></span></div></div>
     </div>
@@ -357,37 +429,6 @@ body.nocursor { cursor: none; }
       <div><div class="body">Shared dictionaries reduce transfer sizes.</div>
         <div class="refs"><span>Tracking <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1882979">bug 1882979</a></span><span>Enablement <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2039320">bug 2039320</a></span></div></div>
     </div>
-  </div>
-  <div class="rum"><div class="lbl">RUM relevance</div><p>Evaluate cache reuse, transferred bytes, and loading performance across first and repeat visits.</p></div>
-</section>
-
-<!-- 10. Section 5 -->
-<section class="slide" data-section="05 · Connections">
-  <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
-  <h2><span class="idx">05</span>Faster connection establishment</h2>
-  <div class="hev3">
-    <div class="name-lg">Happy Eyeballs v3 <span class="pill ship">Rolling out to Release</span></div>
-    <div class="hev3-grid">
-      <div><div class="k">Origin</div><p>IETF draft from the <strong>HAPPY</strong> working group, by Tommy Pauly (Apple) and David Schinazi, Nidhi Jaju &amp; Kenichi Ishibashi (Google).</p></div>
-      <div><div class="k">What’s new</div><p>v1 and v2 (RFC&nbsp;6555, RFC&nbsp;8305) raced IPv6 against IPv4. v3 also races <strong>QUIC against TCP</strong> and uses <strong>HTTPS DNS records</strong> to discover HTTP/3.</p></div>
-    </div>
-    <div class="refs"><a href="https://datatracker.ietf.org/doc/draft-ietf-happy-happyeyeballs-v3/">draft-ietf-happy-happyeyeballs-v3</a><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1953459">bug 1953459</a></div>
-  </div>
-  <div class="rum"><div class="lbl">RUM relevance</div><p>Use <code>nextHopProtocol</code> with DNS and connection timings to assess connection costs and HTTP/3 adoption.</p></div>
-</section>
-
-<!-- 10b. Max's talk -->
-<section class="slide lilac" data-section="05 · Connections">
-  <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
-  <div class="talk">
-    <div class="talk-text">
-      <div class="k">The deep dive</div>
-      <p class="talk-title">Save a round trip: optimizing for IETF’s Happy Eyeballs v3</p>
-      <p class="talk-who"><strong>Max Inden</strong>, Mozilla</p>
-      <p class="talk-where">performance.now() · Amsterdam · 19–20 Nov 2026</p>
-      <p class="talk-link"><a href="https://perfnow.nl/speakers.html#max">perfnow.nl/speakers</a></p>
-    </div>
-    <a class="talk-shot" href="https://perfnow.nl/speakers.html#max"><img src="img/perfnow-hev3.jpg" alt="performance.now() 2026 speaker page: Max Inden (Mozilla), 'Save a round trip: optimizing for IETF's Happy Eyeballs v3'"></a>
   </div>
 </section>
 
@@ -407,7 +448,6 @@ body.nocursor { cursor: none; }
         <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1718781">bug 1718781</a></div></div>
     </div>
   </div>
-  <div class="rum"><div class="lbl">RUM relevance</div><p>Connect resource-loading decisions to FCP and LCP.</p></div>
 </section>
 
 <!-- 12. Section 7 -->
@@ -466,7 +506,8 @@ body.nocursor { cursor: none; }
 <!-- 15. Thanks -->
 <section class="slide violet thanks" data-section="">
   <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""></div><span class="num"></span></div>
-  <div class="big">Thanks</div>
+  <div class="big">Thank you</div>
+  <div class="find">Find us on Matrix: <a href="https://matrix.to/#/#perf:mozilla.org">#perf:mozilla.org</a></div>
   <div class="links">Questions, bugs, use cases: <a href="https://bugzilla.mozilla.org">bugzilla.mozilla.org</a> · Core :: Performance</div>
 </section>
 
