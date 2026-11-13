@@ -143,6 +143,21 @@ code { font-family: var(--mono); font-size: .9em; background: var(--lilac-2); pa
 .shot img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: top; border-radius: 14px; box-shadow: 0 2px 0 var(--rule), 0 18px 48px rgba(43,11,82,.18); background: #fff; }
 .shot figcaption { font-size: 22px; color: var(--muted); margin-top: 18px; }
 
+/* ---------- WPT chart ---------- */
+.chart-sub { font-size: 28px; color: var(--muted); margin-top: 14px; }
+.chart-wrap { position: relative; margin-top: 26px; }
+.legend { list-style: none; display: flex; gap: 44px; font-size: 25px; font-weight: 600; margin-bottom: 10px; }
+.legend li { display: flex; align-items: center; gap: 12px; }
+#wpt-chart { display: block; width: 1696px; height: 600px; overflow: visible; }
+#wpt-chart text { font-family: var(--text); fill: var(--muted); font-size: 22px; }
+#wpt-chart .end-lbl { fill: var(--ink); font-size: 26px; font-weight: 600; }
+#wpt-chart .end-val { fill: var(--ink); font-size: 26px; font-variant-numeric: tabular-nums; }
+.tip { position: absolute; pointer-events: none; background: #fff; border: 1px solid var(--lilac-2); border-radius: 12px; padding: 14px 18px; font-size: 21px; line-height: 1.5; box-shadow: 0 10px 30px rgba(43,11,82,.15); white-space: nowrap; }
+.tip b { font-weight: 700; }
+.tip .sw { display: inline-block; width: 22px; height: 4px; border-radius: 2px; vertical-align: middle; margin-right: 10px; }
+.chart-note { font-size: 21px; color: var(--muted); margin-top: auto; margin-bottom: 56px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
 /* ---------- on-screen controls ---------- */
 #hud { position: fixed; right: 18px; bottom: 14px; display: flex; gap: 6px; align-items: center; font: 600 13px/1 var(--text); color: #fff; opacity: 0; transition: opacity .3s; z-index: 5; }
 body.mouse #hud { opacity: .85; }
@@ -278,6 +293,26 @@ body.nocursor { cursor: none; }
     </div>
   </div>
   <div class="rum"><div class="lbl">RUM relevance</div><p>Measure the benefit of speculative loading, and tell prefetch-assisted navigations apart from ordinary ones.</p></div>
+</section>
+
+<!-- 6b. WPT progress chart -->
+<section class="slide" data-section="03 · Speculation Rules">
+  <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
+  <h2>Prefetch interop on WPT</h2>
+  <p class="chart-sub">Share of subtests passing in <code>/speculation-rules/prefetch</code>, experimental runs on <a href="https://wpt.fyi/results/speculation-rules/prefetch?label=experimental&amp;label=master&amp;product=chrome&amp;product=firefox&amp;product=safari&amp;product=firefox_android">wpt.fyi</a></p>
+  <div class="chart-wrap">
+    <ul class="legend" aria-hidden="true">
+      <li><svg width="44" height="14"><line x1="2" y1="7" x2="42" y2="7" stroke="#7542e5" stroke-width="4" stroke-linecap="round"/></svg>Firefox</li>
+      <li><svg width="44" height="14"><line x1="2" y1="7" x2="42" y2="7" stroke="#7542e5" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 7"/></svg>Firefox Android</li>
+      <li><svg width="44" height="14"><line x1="2" y1="7" x2="42" y2="7" stroke="#0092a8" stroke-width="4" stroke-linecap="round"/></svg>Chrome</li>
+      <li><svg width="44" height="14"><line x1="2" y1="7" x2="42" y2="7" stroke="#9a6b1f" stroke-width="4" stroke-linecap="round"/></svg>Safari</li>
+    </ul>
+    <svg id="wpt-chart" viewBox="0 0 1696 600" role="img" aria-labelledby="wpt-desc"><desc id="wpt-desc">Line chart of WPT prefetch pass rate, October 2025 to November 2026.</desc></svg>
+    <div id="wpt-tip" class="tip" hidden></div>
+    <table id="wpt-table" class="sr-only"><caption>WPT /speculation-rules/prefetch subtests passing</caption><thead><tr><th>Browser</th><th>Date</th><th>Passing</th><th>Total</th></tr></thead><tbody></tbody></table>
+  </div>
+  <p class="chart-note">Firefox results begin Aug 2026, when these tests started running in Firefox CI (Android: Sep 2026). Monthly samples to Jun 2026, then weekly.</p>
+  <script type="application/json" id="wpt-data">{"chrome":[["2025-01-10",161,179],["2025-02-10",161,179],["2025-03-10",161,179],["2025-04-10",172,195],["2025-05-10",185,209],["2025-06-10",195,223],["2025-07-10",201,224],["2025-08-10",201,224],["2025-09-10",204,227],["2025-10-10",198,227],["2025-11-10",198,226],["2025-12-10",201,230],["2026-01-10",201,230],["2026-02-10",206,235],["2026-03-10",206,235],["2026-04-10",215,244],["2026-05-10",215,244],["2026-06-10",215,244],["2026-07-07",215,244],["2026-07-14",215,244],["2026-07-21",216,244],["2026-07-28",216,244],["2026-08-04",216,244],["2026-08-11",216,244],["2026-08-18",216,244],["2026-08-25",216,244],["2026-09-01",216,244],["2026-09-08",216,244],["2026-09-15",217,245],["2026-09-22",221,249],["2026-09-29",221,249],["2026-10-06",221,249],["2026-10-13",222,250],["2026-10-20",222,250],["2026-10-27",222,250],["2026-11-03",231,261],["2026-11-10",239,261],["2026-11-13",243,265]],"safari":[["2025-11-10",72,227],["2025-12-10",74,229],["2026-01-10",76,228],["2026-02-10",142,233],["2026-03-10",143,233],["2026-04-08",149,242],["2026-05-10",149,242],["2026-06-10",149,242],["2026-07-07",147,242],["2026-07-14",146,242],["2026-07-21",147,242],["2026-07-25",143,236],["2026-08-04",143,236],["2026-08-11",143,236],["2026-08-18",147,242],["2026-08-23",147,242],["2026-08-27",147,242],["2026-09-08",147,242],["2026-09-15",147,243],["2026-09-22",147,247],["2026-09-29",147,247],["2026-10-06",147,247],["2026-10-13",147,248],["2026-10-20",148,248],["2026-10-27",148,248],["2026-11-03",157,259],["2026-11-10",157,259],["2026-11-13",160,263]],"firefox":[["2026-08-04",84,244],["2026-08-11",85,244],["2026-08-18",85,244],["2026-08-25",85,244],["2026-09-01",85,244],["2026-09-08",85,244],["2026-09-15",86,245],["2026-09-22",94,249],["2026-09-29",95,249],["2026-10-06",121,249],["2026-10-13",130,250],["2026-10-20",149,250],["2026-10-27",153,250],["2026-11-03",157,261],["2026-11-10",183,261],["2026-11-13",196,265]],"firefox_android":[["2026-09-29",95,249],["2026-09-30",95,249],["2026-10-08",132,249],["2026-10-19",149,250],["2026-10-27",153,250],["2026-11-03",156,259],["2026-11-06",164,261],["2026-11-13",194,263]]}</script>
 </section>
 
 <!-- 7. Demo divider -->
@@ -505,6 +540,93 @@ body.nocursor { cursor: none; }
     clearTimeout(t);
     t = setTimeout(() => { document.body.classList.remove('mouse'); document.body.classList.add('nocursor'); }, 1800);
   });
+
+
+  // ---------- WPT chart ----------
+  (function wptChart() {
+    const svg = document.getElementById('wpt-chart');
+    if (!svg) return;
+    const raw = JSON.parse(document.getElementById('wpt-data').textContent);
+    const SERIES = [
+      { key: 'firefox', name: 'Firefox', color: '#7542e5', dash: null, w: 5 },
+      { key: 'firefox_android', name: 'Firefox Android', color: '#7542e5', dash: '10 9', w: 4 },
+      { key: 'chrome', name: 'Chrome', color: '#0092a8', dash: null, w: 3.5 },
+      { key: 'safari', name: 'Safari', color: '#9a6b1f', dash: null, w: 3.5 },
+    ];
+    const W = 1696, H = 600, L = 70, R = 330, T = 16, B = 50;
+    const t0 = Date.parse('2025-10-01'), t1 = Date.parse('2026-11-20');
+    const x = d => L + (Date.parse(d) - t0) / (t1 - t0) * (W - L - R);
+    const y = v => T + (1 - v / 100) * (H - T - B);
+    const NS = 'http://www.w3.org/2000/svg';
+    const el = (n, a, txt) => { const e = document.createElementNS(NS, n); for (const k in a) e.setAttribute(k, a[k]); if (txt != null) e.textContent = txt; svg.appendChild(e); return e; };
+
+    // grid + y ticks
+    for (const v of [0, 25, 50, 75, 100]) {
+      el('line', { x1: L, x2: W - R + 10, y1: y(v), y2: y(v), stroke: v === 0 ? '#c9c3d6' : '#e8e3ef', 'stroke-width': 1 });
+      el('text', { x: L - 16, y: y(v) + 8, 'text-anchor': 'end' }, v + '%');
+    }
+    // x ticks: quarters
+    for (const d of ['2025-10-01','2025-12-01','2026-02-01','2026-04-01','2026-06-01','2026-08-01','2026-10-01']) {
+      const dt = new Date(d + 'T00:00:00Z');
+      const lbl = dt.toLocaleString('en', { month: 'short', timeZone: 'UTC' }) + (d === '2025-10-01' || dt.getUTCMonth() <= 1 ? ' ' + dt.getUTCFullYear() : '');
+      el('line', { x1: x(d), x2: x(d), y1: H - B, y2: H - B + 8, stroke: '#c9c3d6', 'stroke-width': 1 });
+      el('text', { x: x(d), y: H - B + 36, 'text-anchor': 'middle' }, lbl);
+    }
+
+    const pts = {};
+    // draw context series first, hero last (on top)
+    for (const s of [...SERIES].reverse()) {
+      const p = (raw[s.key] || []).filter(([d]) => Date.parse(d) >= t0).map(([d, pass, tot]) => ({ d, pass, tot, v: pass / tot * 100 }));
+      pts[s.key] = p;
+      if (!p.length) continue;
+      el('path', { d: p.map((q, i) => (i ? 'L' : 'M') + x(q.d).toFixed(1) + ' ' + y(q.v).toFixed(1)).join(' '),
+        fill: 'none', stroke: s.color, 'stroke-width': s.w, 'stroke-linejoin': 'round', 'stroke-linecap': 'round', ...(s.dash ? { 'stroke-dasharray': s.dash } : {}) });
+      const last = p[p.length - 1];
+      el('circle', { cx: x(last.d), cy: y(last.v), r: 8, fill: s.color, stroke: '#fbfbfb', 'stroke-width': 3 });
+    }
+
+    // direct end labels with collision nudging
+    const ends = SERIES.filter(s => pts[s.key].length).map(s => { const q = pts[s.key].at(-1); return { s, q, ly: y(q.v) }; })
+      .sort((a, b) => a.ly - b.ly);
+    const GAP = 68;
+    for (let i = 1; i < ends.length; i++) if (ends[i].ly - ends[i - 1].ly < GAP) ends[i].ly = ends[i - 1].ly + GAP;
+    const lx = x('2026-11-20') + 24;
+    for (const e of ends) {
+      if (Math.abs(e.ly - y(e.q.v)) > 2) el('line', { x1: x(e.q.d) + 10, y1: y(e.q.v), x2: lx - 6, y2: e.ly, stroke: '#c9c3d6', 'stroke-width': 1.5 });
+      el('text', { x: lx, y: e.ly - 2, class: 'end-lbl' }, e.s.name);
+      el('text', { x: lx, y: e.ly + 26, class: 'end-val' }, `${Math.round(e.q.v)}%  ·  ${e.q.pass}/${e.q.tot}`);
+    }
+
+    // table view
+    const tb = document.querySelector('#wpt-table tbody');
+    for (const s of SERIES) for (const q of pts[s.key]) tb.insertAdjacentHTML('beforeend', `<tr><td>${s.name}</td><td>${q.d}</td><td>${q.pass}</td><td>${q.tot}</td></tr>`);
+
+    // hover crosshair + tooltip
+    const tip = document.getElementById('wpt-tip');
+    const cross = el('line', { y1: T, y2: H - B, stroke: '#9b92ad', 'stroke-width': 1, visibility: 'hidden' });
+    const hit = el('rect', { x: L, y: T, width: W - L - R, height: H - T - B, fill: 'transparent' });
+    const fmt = d => new Date(d + 'T00:00:00Z').toLocaleDateString('en', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+    hit.addEventListener('mousemove', ev => {
+      const r = svg.getBoundingClientRect(), k = r.width / W;
+      const mx = (ev.clientX - r.left) / k;
+      const tm = t0 + (mx - L) / (W - L - R) * (t1 - t0);
+      let rows = [], when = null;
+      for (const s of SERIES) {
+        const p = pts[s.key]; if (!p.length) continue;
+        let best = null;
+        for (const q of p) { const dt = Math.abs(Date.parse(q.d) - tm); if (dt < 21 * 864e5 && (!best || dt < best.dt)) best = { q, dt }; }
+        if (best) { rows.push(`<div><span class="sw" style="background:${s.color}"></span>${s.name} <b>${Math.round(best.q.v)}%</b> (${best.q.pass}/${best.q.tot})</div>`); when = when || best.q.d; }
+      }
+      if (!rows.length) { tip.hidden = true; cross.setAttribute('visibility', 'hidden'); return; }
+      cross.setAttribute('x1', mx); cross.setAttribute('x2', mx); cross.setAttribute('visibility', 'visible');
+      tip.innerHTML = `<div style="color:var(--muted)">${fmt(when)}</div>` + rows.join('');
+      tip.hidden = false;
+      const wrap = svg.parentElement.getBoundingClientRect();
+      let left = (ev.clientX - wrap.left) / k + 24; if (left > 1696 - 420) left -= 460;
+      tip.style.left = left + 'px'; tip.style.top = ((ev.clientY - wrap.top) / k - 40) + 'px';
+    });
+    hit.addEventListener('mouseleave', () => { tip.hidden = true; cross.setAttribute('visibility', 'hidden'); });
+  })();
 
   addEventListener('resize', fit);
   addEventListener('hashchange', () => go((parseInt(location.hash.slice(1), 10) || 1) - 1, false));
