@@ -68,7 +68,12 @@ code { font-family: var(--mono); font-size: .9em; background: var(--lilac-2); pa
 .night code, .violet code { background: rgba(255,255,255,.14); }
 
 /* ---------- cover ---------- */
-.cover { justify-content: flex-start; }
+.cover { justify-content: flex-start; position: relative; overflow: hidden; }
+.cover::before { content: ""; position: absolute; right: -220px; top: 60px; width: 1100px; height: 1100px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,113,57,.32) 0%, rgba(255,55,80,.18) 35%, rgba(117,66,229,.10) 60%, transparent 72%); pointer-events: none; }
+.cover > * { position: relative; }
+.cover .cover-logo { position: absolute; right: 150px; top: 250px; width: 440px; height: 440px; filter: drop-shadow(0 24px 60px rgba(0,0,0,.35)); }
+.cover .subtitle .ff { font-weight: 700; background: linear-gradient(90deg, #ffbd4f, #ff7139 45%, #ff3750 80%, #f5156c); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .cover .event { font-size: 34px; font-weight: 600; letter-spacing: .02em; color: var(--violet-hi); margin-top: 90px; }
 .cover .title { font-size: 150px; line-height: 1.02; letter-spacing: -0.02em; margin-top: 36px; max-width: 1640px; }
 .cover .subtitle { font-size: 44px; line-height: 1.3; margin-top: 28px; max-width: 1500px; opacity: .92; }
@@ -82,6 +87,12 @@ code { font-family: var(--mono); font-size: .9em; background: var(--lilac-2); pa
 .divider h1 { font-size: 150px; line-height: 1.02; margin-top: 70px; max-width: 1600px; }
 .divider .lead { font-size: 40px; line-height: 1.35; margin-top: auto; margin-bottom: 110px; max-width: 1300px; opacity: .92; }
 
+/* ---------- agenda: two presenters, short labels ---------- */
+.agenda2 { display: grid; grid-template-columns: 1fr 1fr; column-gap: 120px; margin-top: 72px; }
+.agenda2 .who { font-size: 30px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--violet); padding-bottom: 18px; border-bottom: 3px solid var(--violet); }
+.agenda2 ol { list-style: none; }
+.agenda2 li { font-size: 46px; font-weight: 600; line-height: 1.2; padding: 26px 0; border-bottom: 2px solid var(--rule); display: flex; align-items: baseline; gap: 36px; }
+.agenda2 .n { font-family: var(--head); font-weight: 400; font-size: 46px; color: var(--violet); font-feature-settings: "zero" 1; min-width: 64px; }
 /* ---------- agenda (numbered, 2 columns) ---------- */
 .agenda { display: grid; grid-template-columns: 1fr 1fr; column-gap: 96px; margin-top: 64px; }
 .agenda li { list-style: none; display: grid; grid-template-columns: 120px 1fr; align-items: baseline; border-top: 2px solid var(--rule); padding: 26px 0 30px; }
@@ -224,8 +235,9 @@ body.nocursor { cursor: none; }
 <section class="slide night cover" data-section="">
   <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt="Firefox"></div><span class="num"></span></div>
   <div class="event">W3C Web Performance · RUM Community Group · November 2026</div>
+  <img class="cover-logo" src="img/firefox-logo.svg" alt="">
   <h1 class="title">Mozilla’s Memos</h1>
-  <p class="subtitle">Firefox: new measurement capabilities &amp; faster navigations</p>
+  <p class="subtitle"><span class="ff">Firefox:</span> new measurement capabilities<br>&amp; faster navigations</p>
   <ul class="presenters">
     <li><span class="who">Andrew Creskey</span><span class="org">Performance Engineering, Mozilla</span></li>
     <li><span class="who">Nazim Can Altinova</span><span class="org">Performance Tools, Mozilla</span></li>
@@ -236,16 +248,22 @@ body.nocursor { cursor: none; }
 <section class="slide" data-section="Overview">
   <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
   <h2>What’s new for RUM in Firefox</h2>
-  <ol class="agenda">
-    <li><span class="n">01</span><span class="t">Measuring more of the user experience</span><span class="d">Layout Instability, Container Timing, LoAF</span></li>
-    <li><span class="n">05</span><span class="t">Faster repeat visits, smaller transfers</span><span class="d">No-Vary-Search, Compression Dictionaries</span></li>
-    <li><span class="n">02</span><span class="t">Richer Resource &amp; Navigation Timing</span><span class="d">deliveryType, interim responses, TAO fixes</span></li>
-    <li><span class="n">06</span><span class="t">Control over the critical rendering path</span><span class="d">blocking="render", imagesrcset preloads</span></li>
-    <li><span class="n">03</span><span class="t">Speculation Rules prefetch</span><span class="d">Same-origin prefetch on Nightly</span></li>
-    <li><span class="n">07</span><span class="t">Observability beyond successful loads</span><span class="d">Reporting API, Crash Reporting</span></li>
-    <li><span class="n">04</span><span class="t">Faster connection establishment</span><span class="d">Happy Eyeballs v3</span></li>
-    <li><span class="n">08</span><span class="t">Performance Timeline quality &amp; interop</span><span class="d">LCP, Event Timing, buffered entries</span></li>
-  </ol>
+  <div class="agenda2">
+    <div class="col"><div class="who">Andrew</div>
+      <ol>
+        <li><span class="n">01</span>New measurements</li>
+        <li><span class="n">02</span>Resource &amp; Navigation Timing</li>
+        <li><span class="n">03</span>Speculation Rules</li>
+        <li><span class="n">04</span>Happy Eyeballs v3</li>
+      </ol></div>
+    <div class="col"><div class="who">Nazim</div>
+      <ol>
+        <li><span class="n">05</span>Repeat visits</li>
+        <li><span class="n">06</span>Critical rendering path</li>
+        <li><span class="n">07</span>Observability</li>
+        <li><span class="n">08</span>Timeline interop</li>
+      </ol></div>
+  </div>
 </section>
 
 <!-- 3. Shipping at a glance -->
