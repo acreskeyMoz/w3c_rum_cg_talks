@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Firefox at W3C RUM CG</title>
+<style>
+@font-face { font-family: "Mozilla Headline"; src: url(fonts/MozillaHeadline.woff2) format("woff2"); font-weight: 200 700; font-display: block; }
+@font-face { font-family: "Mozilla Text"; src: url(fonts/MozillaText.woff2) format("woff2"); font-weight: 200 700; font-display: block; }
+
+:root {
+  --ink: #15141a;
+  --paper: #fbfbfb;
+  --lilac: #f4ecf9;
+  --lilac-2: #e6d6f7;
+  --violet: #7542e5;
+  --violet-hi: #a685ff;
+  --night: #2b0b52;
+  --night-line: rgba(255,255,255,.22);
+  --rule: #b9a2f0;
+  --muted: #55506a;
+  --head: "Mozilla Headline", "Zilla Slab", Georgia, serif;
+  --text: "Mozilla Text", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; background: #0c0518; overflow: hidden; }
+body { font-family: var(--text); color: var(--ink); -webkit-font-smoothing: antialiased; }
+
+/* ---------- stage: fixed 1920x1080, scaled to fit ---------- */
+#deck { position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px; transform-origin: 0 0; }
+.slide {
+  position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden;
+  background: var(--paper); padding: 0 112px;
+  display: flex; flex-direction: column;
+  opacity: 0; visibility: hidden; transition: opacity .25s ease, visibility 0s linear .25s;
+}
+.slide.active { opacity: 1; visibility: visible; transition: opacity .25s ease; }
+@media (prefers-reduced-motion: reduce) { .slide, .slide.active { transition: none; } }
+
+.slide.night  { background: var(--night); color: #fff; }
+.slide.violet { background: var(--violet); color: #fff; }
+.slide.lilac  { background: var(--lilac); }
+
+/* header chrome, as in the template */
+.chrome { height: 120px; flex: none; display: flex; align-items: center; justify-content: space-between; font-size: 22px; letter-spacing: .01em; }
+.chrome .left { display: flex; align-items: center; gap: 28px; }
+.chrome img { width: 44px; height: 44px; }
+.chrome .section { font-weight: 600; opacity: .75; }
+.chrome .num { font-variant-numeric: tabular-nums; opacity: .6; }
+
+h1, h2, .big { font-family: var(--head); font-weight: 400; letter-spacing: -0.01em; font-feature-settings: "zero" 1; }
+h2 { font-size: 76px; line-height: 1.08; margin-top: 36px; }
+h2 .idx { color: var(--violet); margin-right: 28px; }
+.night h2 .idx, .violet h2 .idx { color: var(--violet-hi); }
+.sub { font-size: 34px; line-height: 1.35; margin-top: 22px; max-width: 1400px; color: var(--muted); }
+
+a { color: inherit; text-decoration-color: var(--rule); text-underline-offset: 4px; }
+code { font-family: var(--mono); font-size: .9em; background: var(--lilac-2); padding: .05em .3em; border-radius: 6px; }
+.night code, .violet code { background: rgba(255,255,255,.14); }
+
+/* ---------- cover ---------- */
+.cover { justify-content: flex-start; }
+.cover .event { font-size: 30px; font-weight: 600; letter-spacing: .02em; color: var(--violet-hi); margin-top: 90px; }
+.cover .title { font-size: 132px; line-height: 1.04; letter-spacing: -0.02em; margin-top: 36px; max-width: 1640px; }
+.cover .title span { color: var(--violet-hi); }
+.cover .presenters { list-style: none; display: flex; gap: 120px; margin-top: auto; margin-bottom: 110px; }
+.cover .presenters li { border-top: 2px solid var(--night-line); padding-top: 22px; min-width: 440px; display: flex; flex-direction: column; gap: 6px; }
+.cover .presenters .who { font-size: 40px; font-weight: 600; }
+.cover .presenters .org { font-size: 28px; opacity: .75; }
+
+/* ---------- section divider ---------- */
+.divider h1 { font-size: 150px; line-height: 1.02; margin-top: 70px; max-width: 1600px; }
+.divider .lead { font-size: 40px; line-height: 1.35; margin-top: auto; margin-bottom: 110px; max-width: 1300px; opacity: .92; }
+
+/* ---------- agenda (numbered, 2 columns) ---------- */
+.agenda { display: grid; grid-template-columns: 1fr 1fr; column-gap: 96px; margin-top: 64px; }
+.agenda li { list-style: none; display: grid; grid-template-columns: 120px 1fr; align-items: baseline; border-top: 2px solid var(--rule); padding: 26px 0 30px; }
+.agenda .n { font-family: var(--head); font-size: 60px; font-feature-settings: "zero" 1; color: var(--violet); }
+.agenda .t { font-size: 34px; line-height: 1.25; font-weight: 600; }
+.agenda .d { grid-column: 2; font-size: 25px; line-height: 1.35; color: var(--muted); margin-top: 6px; }
+
+/* ---------- item rows: title | body ---------- */
+.rows { margin-top: 48px; display: flex; flex-direction: column; }
+.row { display: grid; grid-template-columns: 560px 1fr; column-gap: 64px; border-top: 2px solid var(--rule); padding: 26px 0 28px; }
+.row:last-child { border-bottom: 2px solid var(--rule); }
+.row .name { font-size: 34px; line-height: 1.2; font-weight: 600; }
+.row .body { font-size: 29px; line-height: 1.38; }
+.row .refs { margin-top: 10px; font-size: 21px; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 22px; }
+.row .refs a { font-family: var(--mono); }
+.rows.compact { margin-top: 36px; }
+.compact .row { padding: 14px 0 16px; }
+.compact .pill { margin-top: 8px; }
+.rows { padding-bottom: 32px; }
+.compact .row .name { font-size: 31px; }
+.compact .row .body { font-size: 27px; }
+.compact .row .refs { margin-top: 6px; }
+
+/* status pill: always text, never color alone */
+.pill { display: inline-block; margin-top: 12px; font-size: 19px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 6px 14px 5px; border-radius: 999px; border: 2px solid currentColor; }
+.pill.ship  { background: var(--violet); color: #fff; border-color: var(--violet); }
+.pill.night { color: var(--violet); }
+.pill.open  { color: var(--muted); border-style: dashed; }
+
+/* RUM relevance callout (template's lilac caption box) */
+.rum { margin-top: auto; margin-bottom: 72px; background: var(--lilac); border-radius: 18px; padding: 28px 40px; display: grid; grid-template-columns: 260px 1fr; gap: 40px; align-items: center; }
+.lilac .rum { background: #fff; }
+.rum .lbl { font-family: var(--head); font-size: 36px; color: var(--violet); line-height: 1.05; }
+.rum p { font-size: 29px; line-height: 1.38; }
+
+/* ---------- stat row (template p90) ---------- */
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); column-gap: 64px; margin-top: auto; margin-bottom: 120px; }
+.stat { border-top: 2px solid var(--night-line); padding-top: 22px; }
+.stat .lbl { font-size: 24px; color: var(--violet-hi); font-weight: 600; letter-spacing: .02em; }
+.stat .big { font-size: 190px; line-height: 1; margin: 10px 0 16px; }
+.stat .what { font-size: 30px; line-height: 1.3; }
+
+/* ---------- statement slide ---------- */
+.statement .say { font-family: var(--head); font-size: 96px; line-height: 1.1; margin-top: 80px; max-width: 1600px; }
+.statement .say em { font-style: normal; color: var(--violet-hi); }
+.codepair { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: auto; margin-bottom: 110px; }
+.codepair figure { border-radius: 18px; padding: 30px 36px; background: rgba(255,255,255,.07); border: 2px solid var(--night-line); }
+.codepair figcaption { font-size: 24px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 16px; }
+.codepair .bad figcaption { color: #ffb4c6; }
+.codepair .good figcaption { color: #c9b6ff; }
+.codepair pre { font-family: var(--mono); font-size: 27px; line-height: 1.5; white-space: pre-wrap; }
+
+/* ---------- thanks ---------- */
+.thanks .big { font-size: 320px; line-height: .9; margin-top: auto; margin-left: -10px; letter-spacing: -0.03em; }
+.thanks .links { font-size: 30px; line-height: 1.6; margin: 40px 0 110px; opacity: .9; }
+
+/* ---------- on-screen controls ---------- */
+#hud { position: fixed; right: 18px; bottom: 14px; display: flex; gap: 6px; align-items: center; font: 600 13px/1 var(--text); color: #fff; opacity: 0; transition: opacity .3s; z-index: 5; }
+body.mouse #hud { opacity: .85; }
+#hud button { all: unset; cursor: pointer; padding: 8px 11px; border-radius: 8px; background: rgba(0,0,0,.45); }
+#hud button:hover { background: rgba(0,0,0,.7); }
+#hud button:focus-visible { outline: 2px solid var(--violet-hi); }
+#progress { position: fixed; left: 0; bottom: 0; height: 4px; background: var(--violet-hi); transition: width .25s; z-index: 5; }
+body.nocursor { cursor: none; }
+
+/* ---------- print: one slide per page ---------- */
+@media print {
+  @page { size: 1920px 1080px; margin: 0; }
+  html, body { overflow: visible; height: auto; background: none; }
+  #deck { position: static; transform: none !important; width: auto; height: auto; }
+  .slide { position: relative; opacity: 1; visibility: visible; break-after: page; }
+  #hud, #progress { display: none; }
+}
+</style>
+</head>
+<body>
+<main id="deck" aria-live="polite">
+
+<!-- 1. Cover -->
+<section class="slide night cover" data-section="">
+  <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt="Firefox"></div><span class="num"></span></div>
+  <div class="event">W3C Web Performance · RUM Community Group · November 2026</div>
+  <h1 class="title">Firefox: new measurement capabilities <span>&amp; faster navigations</span></h1>
+  <ul class="presenters">
+    <li><span class="who">Andrew Creskey</span><span class="org">Mozilla</span></li>
+    <li><span class="who">Nazim Can Altinova</span><span class="org">Mozilla</span></li>
+  </ul>
+</section>
+
+<!-- 2. Agenda -->
+<section class="slide" data-section="Overview">
+  <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
+  <h2>What’s new for RUM in Firefox</h2>
+  <ol class="agenda">
+    <li><span class="n">01</span><span class="t">Measuring more of the user experience</span><span class="d">Layout Instability, Container Timing, LoAF</span></li>
+    <li><span class="n">05</span><span class="t">Faster connection establishment</span><span class="d">Happy Eyeballs v3</span></li>
+    <li><span class="n">02</span><span class="t">Richer Resource &amp; Navigation Timing</span><span class="d">deliveryType, interim responses, TAO fixes</span></li>
+    <li><span class="n">06</span><span class="t">Control over the critical rendering path</span><span class="d">blocking="render", imagesrcset preloads</span></li>
+    <li><span class="n">03</span><span class="t">Speculation Rules prefetch</span><span class="d">Same-origin prefetch on Nightly</span></li>
+    <li><span class="n">07</span><span class="t">Observability beyond successful loads</span><span class="d">Reporting API, Crash Reporting</span></li>
+    <li><span class="n">04</span><span class="t">Faster repeat visits, smaller transfers</span><span class="d">No-Vary-Search, Compression Dictionaries</span></li>
+    <li><span class="n">08</span><span class="t">Performance Timeline quality &amp; interop</span><span class="d">LCP, Event Timing, buffered entries</span></li>
+  </ol>
+</section>
+
+<!-- 3. Shipping at a glance -->
+<section class="slide night" data-section="Overview">
+  <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
+  <h2>Shipped in Release this year</h2>
+  <div class="stats">
+    <div class="stat"><div class="lbl">Firefox</div><div class="big">149</div><div class="what">Reporting API</div></div>
+    <div class="stat"><div class="lbl">Firefox</div><div class="big">160</div><div class="what"><code>blocking="render"</code></div></div>
+    <div class="stat"><div class="lbl">Firefox</div><div class="big">161</div><div class="what">Compression Dictionary Transport on by default</div></div>
+  </div>
+</section>
+
+<!-- 4. Section 1 -->
+<section class="slide" data-section="01 · Measuring more">
+  <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
+  <h2><span class="idx">01</span>Measuring more of the user experience</h2>
+  <div class="rows">
+    <div class="row">
+      <div><div class="name">Layout Instability API</div><span class="pill open">Intent to prototype</span></div>
+      <div><div class="body">A next step toward measuring layout shifts in Firefox.</div>
+        <div class="refs"><a href="https://groups.google.com/a/mozilla.org/g/dev-platform/c/sap7BN5T9bg">dev-platform intent</a><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1651528">bug 1651528</a></div></div>
+    </div>
+    <div class="row">
+      <div><div class="name">Container Timing</div><span class="pill night">Behind a pref</span></div>
+      <div><div class="body">Measures when meaningful regions of a page paint, beyond whole-page milestones.</div>
+        <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1940240">bug 1940240</a></div></div>
+    </div>
+    <div class="row">
+      <div><div class="name">Long Animation Frames (LoAF)</div><span class="pill open">Follow along</span></div>
+      <div><div class="body">Work is tracked in Bugzilla. Follow along and add your use cases.</div>
+        <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1348405">bug 1348405</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. Section 2 -->
+<section class="slide" data-section="02 · Resource & Navigation Timing">
+  <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
+  <h2><span class="idx">02</span>Richer Resource &amp; Navigation Timing</h2>
+  <div class="rows compact">
+    <div class="row">
+      <div><div class="name">Cache attribution</div><span class="pill ship">On by default</span></div>
+      <div><div class="body"><code>deliveryType</code> enabled by default, including <code>"cache"</code>.</div>
+        <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1914120">bug 1914120</a><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2071913">bug 2071913</a></div></div>
+    </div>
+    <div class="row">
+      <div><div class="name">Interim responses</div><span class="pill ship">Supported</span></div>
+      <div><div class="body"><code>firstInterimResponseStart</code> support.</div>
+        <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2006340">bug 2006340</a></div></div>
+    </div>
+    <div class="row">
+      <div><div class="name">TAO across redirects</div><span class="pill ship">Fixed</span></div>
+      <div><div class="body">TAO-protected attributes are no longer exposed when a redirect hop fails the TAO check.</div>
+        <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2085747">bug 2085747</a></div></div>
+    </div>
+    <div class="row">
+      <div><div class="name"><code>resourcetimingbufferfull</code></div><span class="pill ship">Fixed</span></div>
+      <div><div class="body">The event no longer bubbles, matching the spec and other browsers.</div>
+        <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2087563">bug 2087563</a></div></div>
+    </div>
+    <div class="row">
+      <div><div class="name">Navigation redirect visibility</div><span class="pill open">Open</span></div>
+      <div><div class="body">Opt-in to redirect visibility via Timing-Allow-Origin on the destination origin.</div>
+        <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2049166">bug 2049166</a></div></div>
+    </div>
+  </div>
+  <div class="rum"><div class="lbl">RUM relevance</div><p>Better understanding of cache use, interim responses, and cross-origin redirects.</p></div>
+</section>
+
+<!-- 6. Section 3 -->
+<section class="slide" data-section="03 · Speculation Rules">
+  <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
+  <h2><span class="idx">03</span>Speculation Rules prefetch</h2>
+  <div class="rows">
+    <div class="row">
+      <div><div class="name">Same-origin prefetch</div><span class="pill night">Nightly</span></div>
+      <div><div class="body">Rule parsing, navigation reuse, eagerness levels, and HTTP-header support.</div>
+        <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1969396">bug 1969396</a></div></div>
+    </div>
+    <div class="row">
+      <div><div class="name">Measurement support</div><span class="pill night">Nightly</span></div>
+      <div><div class="body"><code>deliveryType="navigational-prefetch"</code> identifies navigations served from prefetch.</div>
+        <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2041381">bug 2041381</a></div></div>
+    </div>
+  </div>
+  <div class="rum"><div class="lbl">RUM relevance</div><p>Measure the benefit of speculative loading, and tell prefetch-assisted navigations apart from ordinary ones.</p></div>
+</section>
+
+<!-- 7. Demo divider -->
+<section class="slide violet divider" data-section="03 · Speculation Rules">
+  <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
+  <h1>DevTools demo</h1>
+  <p class="lead">Speculation Rules prefetch in Firefox Nightly, and spotting <code>navigational-prefetch</code> in the timeline.</p>
+</section>
+
+<!-- 8. Don't UA-gate -->
+<section class="slide night statement" data-section="03 · Speculation Rules">
+  <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
+  <p class="say">Please don’t gate speculation rules on <em>User Agent</em>. Detect the web API instead.</p>
+  <div class="codepair">
+    <figure class="bad"><figcaption>Avoid</figcaption><pre>if (/Chrome/.test(navigator.userAgent)) {
+  addSpeculationRules();
+}</pre></figure>
+    <figure class="good"><figcaption>Prefer</figcaption><pre>if (HTMLScriptElement.supports?.("speculationrules")) {
+  addSpeculationRules();
+}</pre></figure>
+  </div>
+</section>
+
+<!-- 9. Section 4 -->
+<section class="slide" data-section="04 · Repeat visits">
+  <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
+  <h2><span class="idx">04</span>Faster repeat visits, smaller transfers</h2>
+  <div class="rows">
+    <div class="row">
+      <div><div class="name">No-Vary-Search</div><span class="pill ship">Shipped</span></div>
+      <div><div class="body">Cache reuse across URLs whose query parameters do not change the response.</div>
+        <div class="refs"><span>Tracking <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1967294">bug 1967294</a></span><span>Release enablement <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2038013">bug 2038013</a></span></div></div>
+    </div>
+    <div class="row">
+      <div><div class="name">Compression Dictionary Transport</div><span class="pill ship">Default · Firefox 161</span></div>
+      <div><div class="body">Shared dictionaries reduce transfer sizes.</div>
+        <div class="refs"><span>Tracking <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1882979">bug 1882979</a></span><span>Enablement <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2039320">bug 2039320</a></span></div></div>
+    </div>
+  </div>
+  <div class="rum"><div class="lbl">RUM relevance</div><p>Evaluate cache reuse, transferred bytes, and loading performance across first and repeat visits.</p></div>
+</section>
+
+<!-- 10. Section 5 -->
+<section class="slide" data-section="05 · Connections">
+  <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
+  <h2><span class="idx">05</span>Faster connection establishment</h2>
+  <div class="rows">
+    <div class="row">
+      <div><div class="name">Happy Eyeballs v3</div><span class="pill ship">Rolling out to Release</span></div>
+      <div><div class="body">Connection racing across available addresses and protocols, including HTTP/3 discovery through HTTPS DNS records.</div>
+        <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1953459">bug 1953459</a><span>More detail in Max’s talk</span></div></div>
+    </div>
+  </div>
+  <div class="rum"><div class="lbl">RUM relevance</div><p>Use <code>nextHopProtocol</code> with DNS and connection timings to assess connection costs and HTTP/3 adoption.</p></div>
+</section>
+
+<!-- 11. Section 6 -->
+<section class="slide" data-section="06 · Critical rendering path">
+  <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
+  <h2><span class="idx">06</span>More control over the critical rendering path</h2>
+  <div class="rows">
+    <div class="row">
+      <div><div class="name"><code>blocking="render"</code></div><span class="pill ship">Firefox 160</span></div>
+      <div><div class="body">Explicit control over resources that should block rendering.</div>
+        <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1751383">bug 1751383</a></div></div>
+    </div>
+    <div class="row">
+      <div><div class="name">Responsive-image preloads</div><span class="pill ship">Supported</span></div>
+      <div><div class="body"><code>imagesrcset</code> support without <code>href</code>.</div>
+        <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1718781">bug 1718781</a></div></div>
+    </div>
+  </div>
+  <div class="rum"><div class="lbl">RUM relevance</div><p>Connect resource-loading decisions to FCP and LCP.</p></div>
+</section>
+
+<!-- 12. Section 7 -->
+<section class="slide" data-section="07 · Observability">
+  <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
+  <h2><span class="idx">07</span>Observability beyond successful page loads</h2>
+  <div class="rows">
+    <div class="row">
+      <div><div class="name">Reporting API</div><span class="pill ship">Firefox 149</span></div>
+      <div><div class="body">Shipped in Release.</div>
+        <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1976074">bug 1976074</a></div></div>
+    </div>
+    <div class="row">
+      <div><div class="name">Crash Reporting API</div><span class="pill night">Nightly</span></div>
+      <div><div class="body">Enabled on Nightly.</div>
+        <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2036160">bug 2036160</a></div></div>
+    </div>
+    <div class="row">
+      <div><div class="name">Reporting API interop fixes</div><span class="pill ship">Fixed</span></div>
+      <div><div class="body"><code>ReportingObserver</code> callbacks now receive the observer as <code>this</code>. Buffered reports are no longer replayed when <code>observe()</code> is called again after <code>disconnect()</code>.</div>
+        <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2086691">bug 2086691</a><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2086709">bug 2086709</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 13. Section 8 -->
+<section class="slide" data-section="08 · Timeline quality">
+  <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
+  <h2><span class="idx">08</span>Performance Timeline data quality &amp; interop</h2>
+  <div class="rows">
+    <div class="row">
+      <div><div class="name">Largest Contentful Paint</div><span class="pill ship">Fixed</span></div>
+      <div><div class="body">Firefox no longer emits multiple LCP entries for the same candidate.</div>
+        <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1977827">bug 1977827</a></div></div>
+    </div>
+    <div class="row">
+      <div><div class="name">Event Timing</div><span class="pill ship">Fixed</span></div>
+      <div><div class="body"><code>PerformanceEventTiming.duration</code> no longer keeps growing while a native context menu is open.</div>
+        <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2023342">bug 2023342</a></div></div>
+    </div>
+    <div class="row">
+      <div><div class="name">Buffered entry retrieval</div><span class="pill ship">Fixed</span></div>
+      <div><div class="body"><code>first-input</code> is now returned by <code>getEntries()</code> / <code>getEntriesByName()</code>. <code>getEntriesByName()</code> filters navigation by type and returns paint entries in order.</div>
+        <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2087628">bug 2087628</a><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2087581">bug 2087581</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 14. RUM takeaway for section 8 -->
+<section class="slide night statement" data-section="08 · Timeline quality">
+  <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
+  <p class="say">LCP and INP from Firefox are <em>more accurate</em>, and cross-browser comparisons mean more.</p>
+  <p class="lead" style="font-size:38px;line-height:1.4;margin-top:auto;margin-bottom:120px;max-width:1400px;opacity:.9">Late-loading scripts still see <code>first-input</code> and LCP through the <code>buffered</code> flag.</p>
+</section>
+
+<!-- 15. Thanks -->
+<section class="slide violet thanks" data-section="">
+  <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""></div><span class="num"></span></div>
+  <div class="big">Thanks</div>
+  <div class="links">Questions, bugs, use cases: <a href="https://bugzilla.mozilla.org">bugzilla.mozilla.org</a> · Core :: Performance</div>
+</section>
+
+</main>
+
+<div id="hud" role="toolbar" aria-label="Slide controls">
+  <button id="prev" aria-label="Previous slide">←</button>
+  <span id="count" style="padding:0 6px"></span>
+  <button id="next" aria-label="Next slide">→</button>
+  <button id="fs" aria-label="Toggle full screen">⤢ Full screen</button>
+</div>
+<div id="progress"></div>
+
+<script>
+(() => {
+  const deck = document.getElementById('deck');
+  const slides = [...deck.querySelectorAll('.slide')];
+  const total = slides.length;
+  let i = 0;
+
+  // fill chrome: section label + page number
+  slides.forEach((s, n) => {
+    const sec = s.querySelector('.chrome .section');
+    if (sec) sec.textContent = s.dataset.section || '';
+    const num = s.querySelector('.chrome .num');
+    if (num) num.textContent = n === 0 ? '' : String(n + 1);
+  });
+
+  function fit() {
+    const k = Math.min(innerWidth / 1920, innerHeight / 1080);
+    deck.style.transform = `translate(-50%, -50%) scale(${k})`;
+    deck.style.transformOrigin = 'center center';
+  }
+
+  function go(n, push = true) {
+    i = Math.max(0, Math.min(total - 1, n));
+    slides.forEach((s, k) => {
+      s.classList.toggle('active', k === i);
+      s.setAttribute('aria-hidden', k === i ? 'false' : 'true');
+      s.inert = k !== i;
+    });
+    document.getElementById('count').textContent = `${i + 1} / ${total}`;
+    document.getElementById('progress').style.width = `${((i + 1) / total) * 100}%`;
+    if (push) history.replaceState(null, '', `#${i + 1}`);
+  }
+  const next = () => go(i + 1), prev = () => go(i - 1);
+
+  function toggleFs() {
+    if (document.fullscreenElement) document.exitFullscreen();
+    else document.documentElement.requestFullscreen?.();
+  }
+
+  addEventListener('keydown', e => {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    switch (e.key) {
+      case 'ArrowRight': case 'ArrowDown': case 'PageDown': case ' ': case 'Enter': case 'n':
+        e.preventDefault(); next(); break;
+      case 'ArrowLeft': case 'ArrowUp': case 'PageUp': case 'Backspace': case 'p':
+        e.preventDefault(); prev(); break;
+      case 'Home': e.preventDefault(); go(0); break;
+      case 'End': e.preventDefault(); go(total - 1); break;
+      case 'f': case 'F': e.preventDefault(); toggleFs(); break;
+    }
+  });
+
+  // click to advance (but not on links / controls); shift-click goes back
+  deck.addEventListener('click', e => {
+    if (e.target.closest('a, button, pre, code')) return;
+    e.shiftKey ? prev() : next();
+  });
+  document.getElementById('next').onclick = next;
+  document.getElementById('prev').onclick = prev;
+  document.getElementById('fs').onclick = toggleFs;
+
+  // swipe on touch screens
+  let x0 = null;
+  addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+  addEventListener('touchend', e => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0; x0 = null;
+    if (Math.abs(dx) > 50) dx < 0 ? next() : prev();
+  });
+
+  // show controls + cursor only while the mouse moves
+  let t;
+  addEventListener('mousemove', () => {
+    document.body.classList.add('mouse'); document.body.classList.remove('nocursor');
+    clearTimeout(t);
+    t = setTimeout(() => { document.body.classList.remove('mouse'); document.body.classList.add('nocursor'); }, 1800);
+  });
+
+  addEventListener('resize', fit);
+  addEventListener('hashchange', () => go((parseInt(location.hash.slice(1), 10) || 1) - 1, false));
+  fit();
+  go((parseInt(location.hash.slice(1), 10) || 1) - 1, false);
+})();
+</script>
+</body>
+</html>
