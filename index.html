@@ -321,21 +321,19 @@ body.nocursor { cursor: none; }
 <!-- 6b. WPT progress chart -->
 <section class="slide" data-section="03 · Speculation Rules">
   <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
-  <h2>Prefetch interop on WPT</h2>
-  <p class="chart-sub">Share of subtests passing in <code>/speculation-rules/prefetch</code>, experimental runs on <a href="https://wpt.fyi/results/speculation-rules/prefetch?label=experimental&amp;label=master&amp;product=chrome&amp;product=firefox&amp;product=safari&amp;product=firefox_android">wpt.fyi</a></p>
+  <h2>Firefox prefetch progress on WPT</h2>
+  <p class="chart-sub">Share of subtests passing in <code>/speculation-rules/prefetch</code>, experimental runs on <a href="https://wpt.fyi/results/speculation-rules/prefetch?label=experimental&amp;label=master&amp;product=firefox&amp;product=firefox_android">wpt.fyi</a></p>
   <div class="chart-wrap">
     <ul class="legend" aria-hidden="true">
       <li><svg width="44" height="14"><line x1="2" y1="7" x2="42" y2="7" stroke="#7542e5" stroke-width="4" stroke-linecap="round"/></svg>Firefox</li>
       <li><svg width="44" height="14"><line x1="2" y1="7" x2="42" y2="7" stroke="#7542e5" stroke-width="4" stroke-linecap="round" stroke-dasharray="8 7"/></svg>Firefox Android</li>
-      <li><svg width="44" height="14"><line x1="2" y1="7" x2="42" y2="7" stroke="#0092a8" stroke-width="4" stroke-linecap="round"/></svg>Chrome</li>
-      <li><svg width="44" height="14"><line x1="2" y1="7" x2="42" y2="7" stroke="#9a6b1f" stroke-width="4" stroke-linecap="round"/></svg>Safari</li>
     </ul>
-    <svg id="wpt-chart" viewBox="0 0 1696 600" role="img" aria-labelledby="wpt-desc"><desc id="wpt-desc">Line chart of WPT prefetch pass rate, October 2025 to November 2026.</desc></svg>
+    <svg id="wpt-chart" viewBox="0 0 1696 600" role="img" aria-labelledby="wpt-desc"><desc id="wpt-desc">Line chart of WPT prefetch pass rate, August to November 2026.</desc></svg>
     <div id="wpt-tip" class="tip" hidden></div>
     <table id="wpt-table" class="sr-only"><caption>WPT /speculation-rules/prefetch subtests passing</caption><thead><tr><th>Browser</th><th>Date</th><th>Passing</th><th>Total</th></tr></thead><tbody></tbody></table>
   </div>
-  <p class="chart-note">Firefox results begin Aug 2026, when these tests started running in Firefox CI (Android: Sep 2026). Monthly samples to Jun 2026, then weekly.</p>
-  <script type="application/json" id="wpt-data">{"chrome":[["2025-01-10",161,179],["2025-02-10",161,179],["2025-03-10",161,179],["2025-04-10",172,195],["2025-05-10",185,209],["2025-06-10",195,223],["2025-07-10",201,224],["2025-08-10",201,224],["2025-09-10",204,227],["2025-10-10",198,227],["2025-11-10",198,226],["2025-12-10",201,230],["2026-01-10",201,230],["2026-02-10",206,235],["2026-03-10",206,235],["2026-04-10",215,244],["2026-05-10",215,244],["2026-06-10",215,244],["2026-07-07",215,244],["2026-07-14",215,244],["2026-07-21",216,244],["2026-07-28",216,244],["2026-08-04",216,244],["2026-08-11",216,244],["2026-08-18",216,244],["2026-08-25",216,244],["2026-09-01",216,244],["2026-09-08",216,244],["2026-09-15",217,245],["2026-09-22",221,249],["2026-09-29",221,249],["2026-10-06",221,249],["2026-10-13",222,250],["2026-10-20",222,250],["2026-10-27",222,250],["2026-11-03",231,261],["2026-11-10",239,261],["2026-11-13",243,265]],"safari":[["2025-11-10",72,227],["2025-12-10",74,229],["2026-01-10",76,228],["2026-02-10",142,233],["2026-03-10",143,233],["2026-04-08",149,242],["2026-05-10",149,242],["2026-06-10",149,242],["2026-07-07",147,242],["2026-07-14",146,242],["2026-07-21",147,242],["2026-07-25",143,236],["2026-08-04",143,236],["2026-08-11",143,236],["2026-08-18",147,242],["2026-08-23",147,242],["2026-08-27",147,242],["2026-09-08",147,242],["2026-09-15",147,243],["2026-09-22",147,247],["2026-09-29",147,247],["2026-10-06",147,247],["2026-10-13",147,248],["2026-10-20",148,248],["2026-10-27",148,248],["2026-11-03",157,259],["2026-11-10",157,259],["2026-11-13",160,263]],"firefox":[["2026-08-04",84,244],["2026-08-11",85,244],["2026-08-18",85,244],["2026-08-25",85,244],["2026-09-01",85,244],["2026-09-08",85,244],["2026-09-15",86,245],["2026-09-22",94,249],["2026-09-29",95,249],["2026-10-06",121,249],["2026-10-13",130,250],["2026-10-20",149,250],["2026-10-27",153,250],["2026-11-03",157,261],["2026-11-10",183,261],["2026-11-13",196,265]],"firefox_android":[["2026-09-29",95,249],["2026-09-30",95,249],["2026-10-08",132,249],["2026-10-19",149,250],["2026-10-27",153,250],["2026-11-03",156,259],["2026-11-06",164,261],["2026-11-13",194,263]]}</script>
+  <p class="chart-note">Results begin Aug 2026, when these tests started running in Firefox CI (Android: Sep 2026). Weekly samples.</p>
+  <script type="application/json" id="wpt-data">{"firefox":[["2026-08-04",84,244],["2026-08-11",85,244],["2026-08-18",85,244],["2026-08-25",85,244],["2026-09-01",85,244],["2026-09-08",85,244],["2026-09-15",86,245],["2026-09-22",94,249],["2026-09-29",95,249],["2026-10-06",121,249],["2026-10-13",130,250],["2026-10-20",149,250],["2026-10-27",153,250],["2026-11-03",157,261],["2026-11-10",183,261],["2026-11-13",196,265]],"firefox_android":[["2026-09-29",95,249],["2026-09-30",95,249],["2026-10-08",132,249],["2026-10-19",149,250],["2026-10-27",153,250],["2026-11-03",156,259],["2026-11-06",164,261],["2026-11-13",194,263]]}</script>
 </section>
 
 <!-- 7. Demo divider -->
@@ -570,11 +568,9 @@ body.nocursor { cursor: none; }
     const SERIES = [
       { key: 'firefox', name: 'Firefox', color: '#7542e5', dash: null, w: 5 },
       { key: 'firefox_android', name: 'Firefox Android', color: '#7542e5', dash: '10 9', w: 4 },
-      { key: 'chrome', name: 'Chrome', color: '#0092a8', dash: null, w: 3.5 },
-      { key: 'safari', name: 'Safari', color: '#9a6b1f', dash: null, w: 3.5 },
     ];
     const W = 1696, H = 600, L = 70, R = 330, T = 16, B = 50;
-    const t0 = Date.parse('2025-10-01'), t1 = Date.parse('2026-11-20');
+    const t0 = Date.parse('2026-07-25'), t1 = Date.parse('2026-11-20');
     const x = d => L + (Date.parse(d) - t0) / (t1 - t0) * (W - L - R);
     const y = v => T + (1 - v / 100) * (H - T - B);
     const NS = 'http://www.w3.org/2000/svg';
@@ -586,9 +582,9 @@ body.nocursor { cursor: none; }
       el('text', { x: L - 16, y: y(v) + 8, 'text-anchor': 'end' }, v + '%');
     }
     // x ticks: quarters
-    for (const d of ['2025-10-01','2025-12-01','2026-02-01','2026-04-01','2026-06-01','2026-08-01','2026-10-01']) {
+    for (const d of ['2026-08-01','2026-09-01','2026-10-01','2026-11-01']) {
       const dt = new Date(d + 'T00:00:00Z');
-      const lbl = dt.toLocaleString('en', { month: 'short', timeZone: 'UTC' }) + (d === '2025-10-01' || dt.getUTCMonth() <= 1 ? ' ' + dt.getUTCFullYear() : '');
+      const lbl = dt.toLocaleString('en', { month: 'short', timeZone: 'UTC' }) + (d === '2026-08-01' ? ' ' + dt.getUTCFullYear() : '');
       el('line', { x1: x(d), x2: x(d), y1: H - B, y2: H - B + 8, stroke: '#c9c3d6', 'stroke-width': 1 });
       el('text', { x: x(d), y: H - B + 36, 'text-anchor': 'middle' }, lbl);
     }
