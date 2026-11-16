@@ -1,0 +1,103 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WPT Prefetch Browser Comparison</title>
+<style>
+:root{--bg:#fcfcfb;--ink:#1d1a24;--muted:#5d5869;}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 Inter,system-ui,-apple-system,sans-serif}
+main{max-width:1600px;margin:0 auto;padding:40px 16px}
+h1{font-size:34px;margin:0 0 6px;font-weight:650} .sub{color:var(--muted);margin:0 0 22px;font-size:18px}
+code{background:#efe9f8;padding:1px 6px;border-radius:5px}
+.legend{display:flex;gap:28px;flex-wrap:wrap;margin-bottom:8px;font-size:16px} .legend i,td i{display:inline-block;width:14px;height:14px;border-radius:3px;margin-right:8px;vertical-align:-2px}
+svg{width:100%;height:auto;display:block} .ax{font-size:15px;fill:var(--muted)} .el{font-size:19px;font-weight:650} .ev{font-size:17px;fill:var(--muted)}
+.hit:hover{fill:rgba(0,0,0,.12)}
+table{border-collapse:collapse;margin-top:28px;font-size:16px;width:100%;max-width:1100px} th,td{text-align:left;padding:8px 14px 8px 0;border-bottom:1px solid #e6e2ee} th{color:var(--muted);font-weight:600}
+.note{color:var(--muted);font-size:15px;margin-top:20px;max-width:1100px}
+</style></head><body><main>
+<h1>Speculation Rules prefetch on WPT, by browser</h1>
+<p class="sub">Share of subtests passing in <code>/speculation-rules/prefetch/</code>, experimental runs on wpt.fyi. Generated 2026-11-16.</p>
+<div class="legend"><span><i style="background:#7542e5"></i>Firefox</span><span><i style="background:#0f8f6e"></i>Chrome</span><span><i style="background:#d97a00"></i>Safari Technology Preview</span></div>
+<svg viewBox="0 0 1600 640" role="img" aria-label="Line chart of WPT prefetch pass rate by browser, Jan 2025 to Nov 2026"><line x1="80" x2="1300" y1="580.0" y2="580.0" stroke="#e6e2ee"/><text x="68" y="586.0" text-anchor="end" class="ax">0%</text><line x1="80" x2="1300" y1="442.5" y2="442.5" stroke="#e6e2ee"/><text x="68" y="448.5" text-anchor="end" class="ax">25%</text><line x1="80" x2="1300" y1="305.0" y2="305.0" stroke="#e6e2ee"/><text x="68" y="311.0" text-anchor="end" class="ax">50%</text><line x1="80" x2="1300" y1="167.5" y2="167.5" stroke="#e6e2ee"/><text x="68" y="173.5" text-anchor="end" class="ax">75%</text><line x1="80" x2="1300" y1="30.0" y2="30.0" stroke="#e6e2ee"/><text x="68" y="36.0" text-anchor="end" class="ax">100%</text><line x1="80.0" x2="80.0" y1="580" y2="586" stroke="#8a8399"/><text x="80.0" y="608" text-anchor="middle" class="ax">Jan 2025</text><line x1="237.3" x2="237.3" y1="580" y2="586" stroke="#8a8399"/><text x="237.3" y="608" text-anchor="middle" class="ax">Apr</text><line x1="396.4" x2="396.4" y1="580" y2="586" stroke="#8a8399"/><text x="396.4" y="608" text-anchor="middle" class="ax">Jul</text><line x1="557.2" x2="557.2" y1="580" y2="586" stroke="#8a8399"/><text x="557.2" y="608" text-anchor="middle" class="ax">Oct</text><line x1="718.0" x2="718.0" y1="580" y2="586" stroke="#8a8399"/><text x="718.0" y="608" text-anchor="middle" class="ax">Jan 2026</text><line x1="875.3" x2="875.3" y1="580" y2="586" stroke="#8a8399"/><text x="875.3" y="608" text-anchor="middle" class="ax">Apr</text><line x1="1034.3" x2="1034.3" y1="580" y2="586" stroke="#8a8399"/><text x="1034.3" y="608" text-anchor="middle" class="ax">Jul</text><line x1="1195.1" x2="1195.1" y1="580" y2="586" stroke="#8a8399"/><text x="1195.1" y="608" text-anchor="middle" class="ax">Oct</text><polyline points="1093.8,390.7 1106.0,388.4 1118.2,388.4 1130.5,388.4 1142.7,388.4 1154.9,388.4 1167.2,386.9 1179.4,372.4 1191.6,370.2 1203.9,312.7 1216.1,294.0 1228.3,252.2 1240.6,243.4 1252.8,249.2 1265.0,194.4 1275.5,177.8" fill="none" stroke="#7542e5" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><circle cx="1093.8" cy="390.7" r="9" fill="transparent" class="hit"><title>Firefox · 2026-08-04 · 155.0a1
+34.4% (84/244)</title></circle><circle cx="1106.0" cy="388.4" r="9" fill="transparent" class="hit"><title>Firefox · 2026-08-11 · 155.0a1
+34.8% (85/244)</title></circle><circle cx="1118.2" cy="388.4" r="9" fill="transparent" class="hit"><title>Firefox · 2026-08-18 · 156.0a1
+34.8% (85/244)</title></circle><circle cx="1130.5" cy="388.4" r="9" fill="transparent" class="hit"><title>Firefox · 2026-08-25 · 156.0a1
+34.8% (85/244)</title></circle><circle cx="1142.7" cy="388.4" r="9" fill="transparent" class="hit"><title>Firefox · 2026-09-01 · 157.0a1
+34.8% (85/244)</title></circle><circle cx="1154.9" cy="388.4" r="9" fill="transparent" class="hit"><title>Firefox · 2026-09-08 · 157.0a1
+34.8% (85/244)</title></circle><circle cx="1167.2" cy="386.9" r="9" fill="transparent" class="hit"><title>Firefox · 2026-09-15 · 158.0a1
+35.1% (86/245)</title></circle><circle cx="1179.4" cy="372.4" r="9" fill="transparent" class="hit"><title>Firefox · 2026-09-22 · 158.0a1
+37.8% (94/249)</title></circle><circle cx="1191.6" cy="370.2" r="9" fill="transparent" class="hit"><title>Firefox · 2026-09-29 · 159.0a1
+38.2% (95/249)</title></circle><circle cx="1203.9" cy="312.7" r="9" fill="transparent" class="hit"><title>Firefox · 2026-10-06 · 159.0a1
+48.6% (121/249)</title></circle><circle cx="1216.1" cy="294.0" r="9" fill="transparent" class="hit"><title>Firefox · 2026-10-13 · 160.0a1
+52.0% (130/250)</title></circle><circle cx="1228.3" cy="252.2" r="9" fill="transparent" class="hit"><title>Firefox · 2026-10-20 · 160.0a1
+59.6% (149/250)</title></circle><circle cx="1240.6" cy="243.4" r="9" fill="transparent" class="hit"><title>Firefox · 2026-10-27 · 161.0a1
+61.2% (153/250)</title></circle><circle cx="1252.8" cy="249.2" r="9" fill="transparent" class="hit"><title>Firefox · 2026-11-03 · 161.0a1
+60.2% (157/261)</title></circle><circle cx="1265.0" cy="194.4" r="9" fill="transparent" class="hit"><title>Firefox · 2026-11-10 · 162.0a1
+70.1% (183/261)</title></circle><circle cx="1275.5" cy="177.8" r="9" fill="transparent" class="hit"><title>Firefox · 2026-11-16 · 162.0a1
+73.1% (196/268)</title></circle><circle cx="1275.5" cy="177.8" r="6" fill="#7542e5" stroke="#fcfcfb" stroke-width="2"/><polyline points="95.7,85.3 149.9,85.3 198.9,85.3 253.0,94.9 305.5,93.2 359.7,99.1 412.1,86.5 466.3,86.5 520.5,85.7 572.9,100.3 627.1,98.1 679.5,99.3 733.7,99.3 787.9,97.9 836.8,97.9 891.0,95.4 943.4,95.4 997.6,95.4 1044.8,95.4 1057.0,95.4 1069.3,93.1 1081.5,93.1 1093.8,93.1 1106.0,93.1 1118.2,93.1 1130.5,93.1 1142.7,93.1 1154.9,93.1 1167.2,92.9 1179.4,91.8 1191.6,91.8 1203.9,91.8 1216.1,91.6 1228.3,91.6 1240.6,91.6 1252.8,93.2 1265.0,76.4 1275.5,81.3" fill="none" stroke="#0f8f6e" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="95.7" cy="85.3" r="9" fill="transparent" class="hit"><title>Chrome · 2025-01-10 · 134.0.6949.0
+89.9% (161/179)</title></circle><circle cx="149.9" cy="85.3" r="9" fill="transparent" class="hit"><title>Chrome · 2025-02-10 · 135.0.7010.0
+89.9% (161/179)</title></circle><circle cx="198.9" cy="85.3" r="9" fill="transparent" class="hit"><title>Chrome · 2025-03-10 · 136.0.7061.0
+89.9% (161/179)</title></circle><circle cx="253.0" cy="94.9" r="9" fill="transparent" class="hit"><title>Chrome · 2025-04-10 · 137.0.7119.0
+88.2% (172/195)</title></circle><circle cx="305.5" cy="93.2" r="9" fill="transparent" class="hit"><title>Chrome · 2025-05-10 · 138.0.7171.0
+88.5% (185/209)</title></circle><circle cx="359.7" cy="99.1" r="9" fill="transparent" class="hit"><title>Chrome · 2025-06-10 · 139.0.7231.0
+87.4% (195/223)</title></circle><circle cx="412.1" cy="86.5" r="9" fill="transparent" class="hit"><title>Chrome · 2025-07-10 · 140.0.7287.0
+89.7% (201/224)</title></circle><circle cx="466.3" cy="86.5" r="9" fill="transparent" class="hit"><title>Chrome · 2025-08-10 · 141.0.7348.0
+89.7% (201/224)</title></circle><circle cx="520.5" cy="85.7" r="9" fill="transparent" class="hit"><title>Chrome · 2025-09-10 · 142.0.7406.0
+89.9% (204/227)</title></circle><circle cx="572.9" cy="100.3" r="9" fill="transparent" class="hit"><title>Chrome · 2025-10-10 · 143.0.7463.0
+87.2% (198/227)</title></circle><circle cx="627.1" cy="98.1" r="9" fill="transparent" class="hit"><title>Chrome · 2025-11-10 · 144.0.7520.0
+87.6% (198/226)</title></circle><circle cx="679.5" cy="99.3" r="9" fill="transparent" class="hit"><title>Chrome · 2025-12-10 · 145.0.7571.0
+87.4% (201/230)</title></circle><circle cx="733.7" cy="99.3" r="9" fill="transparent" class="hit"><title>Chrome · 2026-01-10 · 145.0.7625.0
+87.4% (201/230)</title></circle><circle cx="787.9" cy="97.9" r="9" fill="transparent" class="hit"><title>Chrome · 2026-02-10 · 146.0.7680.0
+87.7% (206/235)</title></circle><circle cx="836.8" cy="97.9" r="9" fill="transparent" class="hit"><title>Chrome · 2026-03-10 · 147.0.7727.2
+87.7% (206/235)</title></circle><circle cx="891.0" cy="95.4" r="9" fill="transparent" class="hit"><title>Chrome · 2026-04-10 · 149.0.7783.0
+88.1% (215/244)</title></circle><circle cx="943.4" cy="95.4" r="9" fill="transparent" class="hit"><title>Chrome · 2026-05-10 · 150.0.7834.0
+88.1% (215/244)</title></circle><circle cx="997.6" cy="95.4" r="9" fill="transparent" class="hit"><title>Chrome · 2026-06-10 · 151.0.7886.0
+88.1% (215/244)</title></circle><circle cx="1044.8" cy="95.4" r="9" fill="transparent" class="hit"><title>Chrome · 2026-07-07 · 152.0.7937.0
+88.1% (215/244)</title></circle><circle cx="1057.0" cy="95.4" r="9" fill="transparent" class="hit"><title>Chrome · 2026-07-14 · 152.0.7949.0
+88.1% (215/244)</title></circle><circle cx="1069.3" cy="93.1" r="9" fill="transparent" class="hit"><title>Chrome · 2026-07-21 · 152.0.7964.0
+88.5% (216/244)</title></circle><circle cx="1081.5" cy="93.1" r="9" fill="transparent" class="hit"><title>Chrome · 2026-07-28 · 152.0.7977.2
+88.5% (216/244)</title></circle><circle cx="1093.8" cy="93.1" r="9" fill="transparent" class="hit"><title>Chrome · 2026-08-04 · 153.0.7991.0
+88.5% (216/244)</title></circle><circle cx="1106.0" cy="93.1" r="9" fill="transparent" class="hit"><title>Chrome · 2026-08-11 · 153.0.8002.0
+88.5% (216/244)</title></circle><circle cx="1118.2" cy="93.1" r="9" fill="transparent" class="hit"><title>Chrome · 2026-08-18 · 153.0.8010.2
+88.5% (216/244)</title></circle><circle cx="1130.5" cy="93.1" r="9" fill="transparent" class="hit"><title>Chrome · 2026-08-25 · 154.0.8021.0
+88.5% (216/244)</title></circle><circle cx="1142.7" cy="93.1" r="9" fill="transparent" class="hit"><title>Chrome · 2026-09-01 · 154.0.8037.0
+88.5% (216/244)</title></circle><circle cx="1154.9" cy="93.1" r="9" fill="transparent" class="hit"><title>Chrome · 2026-09-08 · 155.0.8047.0
+88.5% (216/244)</title></circle><circle cx="1167.2" cy="92.9" r="9" fill="transparent" class="hit"><title>Chrome · 2026-09-15 · 156.0.8060.2
+88.6% (217/245)</title></circle><circle cx="1179.4" cy="91.8" r="9" fill="transparent" class="hit"><title>Chrome · 2026-09-22 · 156.0.8069.0
+88.8% (221/249)</title></circle><circle cx="1191.6" cy="91.8" r="9" fill="transparent" class="hit"><title>Chrome · 2026-09-29 · 156.0.8078.3
+88.8% (221/249)</title></circle><circle cx="1203.9" cy="91.8" r="9" fill="transparent" class="hit"><title>Chrome · 2026-10-06 · 157.0.8089.0
+88.8% (221/249)</title></circle><circle cx="1216.1" cy="91.6" r="9" fill="transparent" class="hit"><title>Chrome · 2026-10-13 · 157.0.8102.0
+88.8% (222/250)</title></circle><circle cx="1228.3" cy="91.6" r="9" fill="transparent" class="hit"><title>Chrome · 2026-10-20 · 158.0.8114.0
+88.8% (222/250)</title></circle><circle cx="1240.6" cy="91.6" r="9" fill="transparent" class="hit"><title>Chrome · 2026-10-27 · 158.0.8127.2
+88.8% (222/250)</title></circle><circle cx="1252.8" cy="93.2" r="9" fill="transparent" class="hit"><title>Chrome · 2026-11-03 · 159.0.8140.0
+88.5% (231/261)</title></circle><circle cx="1265.0" cy="76.4" r="9" fill="transparent" class="hit"><title>Chrome · 2026-11-10 · 159.0.8154.2
+91.6% (239/261)</title></circle><circle cx="1275.5" cy="81.3" r="9" fill="transparent" class="hit"><title>Chrome · 2026-11-16 · 160.0.8164.0
+90.7% (243/268)</title></circle><circle cx="1275.5" cy="81.3" r="6" fill="#0f8f6e" stroke="#fcfcfb" stroke-width="2"/><polyline points="627.1,405.6 679.5,402.3 733.7,396.7 787.9,244.8 836.8,242.4 887.5,241.4 943.4,241.4 997.6,241.4 1044.8,245.9 1057.0,248.2 1069.3,245.9 1076.3,246.7 1093.8,246.7 1106.0,246.7 1118.2,245.9 1127.0,245.9 1134.0,245.9 1154.9,245.9 1167.2,247.3 1179.4,252.7 1191.6,252.7 1203.9,252.7 1216.1,254.0 1228.3,251.8 1240.6,251.8 1252.8,246.6 1265.0,246.6 1275.5,245.0" fill="none" stroke="#d97a00" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/><circle cx="627.1" cy="405.6" r="9" fill="transparent" class="hit"><title>Safari Technology Preview · 2025-11-10 · 231 preview
+31.7% (72/227)</title></circle><circle cx="679.5" cy="402.3" r="9" fill="transparent" class="hit"><title>Safari Technology Preview · 2025-12-10 · 233 preview
+32.3% (74/229)</title></circle><circle cx="733.7" cy="396.7" r="9" fill="transparent" class="hit"><title>Safari Technology Preview · 2026-01-10 · 234 preview
+33.3% (76/228)</title></circle><circle cx="787.9" cy="244.8" r="9" fill="transparent" class="hit"><title>Safari Technology Preview · 2026-02-10 · 236 preview
+60.9% (142/233)</title></circle><circle cx="836.8" cy="242.4" r="9" fill="transparent" class="hit"><title>Safari Technology Preview · 2026-03-10 · 238 preview
+61.4% (143/233)</title></circle><circle cx="887.5" cy="241.4" r="9" fill="transparent" class="hit"><title>Safari Technology Preview · 2026-04-08 · 240 preview
+61.6% (149/242)</title></circle><circle cx="943.4" cy="241.4" r="9" fill="transparent" class="hit"><title>Safari Technology Preview · 2026-05-10 · 243 preview
+61.6% (149/242)</title></circle><circle cx="997.6" cy="241.4" r="9" fill="transparent" class="hit"><title>Safari Technology Preview · 2026-06-10 · 245 preview
+61.6% (149/242)</title></circle><circle cx="1044.8" cy="245.9" r="9" fill="transparent" class="hit"><title>Safari Technology Preview · 2026-07-07 · 247 preview
+60.7% (147/242)</title></circle><circle cx="1057.0" cy="248.2" r="9" fill="transparent" class="hit"><title>Safari Technology Preview · 2026-07-14 · 247 preview
+60.3% (146/242)</title></circle><circle cx="1069.3" cy="245.9" r="9" fill="transparent" class="hit"><title>Safari Technology Preview · 2026-07-21 · 247 preview
+60.7% (147/242)</title></circle><circle cx="1076.3" cy="246.7" r="9" fill="transparent" class="hit"><title>Safari Technology Preview · 2026-07-25 · 248 preview
+60.6% (143/236)</title></circle><circle cx="1093.8" cy="246.7" r="9" fill="transparent" class="hit"><title>Safari Technology Preview · 2026-08-04 · 249 preview
+60.6% (143/236)</title></circle><circle cx="1106.0" cy="246.7" r="9" fill="transparent" class="hit"><title>Safari Technology Preview · 2026-08-11 · 249 preview
+60.6% (143/236)</title></circle><circle cx="1118.2" cy="245.9" r="9" fill="transparent" class="hit"><title>Safari Technology Preview · 2026-08-18 · 250 preview
+60.7% (147/242)</title></circle><circle cx="1127.0" cy="245.9" r="9" fill="transparent" class="hit"><title>Safari Technology Preview · 2026-08-23 · 250 preview
+60.7% (147/242)</title></circle><circle cx="1134.0" cy="245.9" r="9" fill="transparent" class="hit"><title>Safari Technology Preview · 2026-08-27 · 251 preview
+60.7% (147/242)</title></circle><circle cx="1154.9" cy="245.9" r="9" fill="transparent" class="hit"><title>Safari Technology Preview · 2026-09-08 · 251 preview
+60.7% (147/242)</title></circle><circle cx="1167.2" cy="247.3" r="9" fill="transparent" class="hit"><title>Safari Technology Preview · 2026-09-15 · 252 preview
+60.5% (147/243)</title></circle><circle cx="1179.4" cy="252.7" r="9" fill="transparent" class="hit"><title>Safari Technology Preview · 2026-09-22 · 252 preview
+59.5% (147/247)</title></circle><circle cx="1191.6" cy="252.7" r="9" fill="transparent" class="hit"><title>Safari Technology Preview · 2026-09-29 · 253 preview
+59.5% (147/247)</title></circle><circle cx="1203.9" cy="252.7" r="9" fill="transparent" class="hit"><title>Safari Technology Preview · 2026-10-06 · 253 preview
+59.5% (147/247)</title></circle><circle cx="1216.1" cy="254.0" r="9" fill="transparent" class="hit"><title>Safari Technology Preview · 2026-10-13 · 254 preview
+59.3% (147/248)</title></circle><circle cx="1228.3" cy="251.8" r="9" fill="transparent" class="hit"><title>Safari Technology Preview · 2026-10-20 · 254 preview
+59.7% (148/248)</title></circle><circle cx="1240.6" cy="251.8" r="9" fill="transparent" class="hit"><title>Safari Technology Preview · 2026-10-27 · 255 preview
+59.7% (148/248)</title></circle><circle cx="1252.8" cy="246.6" r="9" fill="transparent" class="hit"><title>Safari Technology Preview · 2026-11-03 · 255 preview
+60.6% (157/259)</title></circle><circle cx="1265.0" cy="246.6" r="9" fill="transparent" class="hit"><title>Safari Technology Preview · 2026-11-10 · 256 preview
+60.6% (157/259)</title></circle><circle cx="1275.5" cy="245.0" r="9" fill="transparent" class="hit"><title>Safari Technology Preview · 2026-11-16 · 256 preview
+60.9% (162/266)</title></circle><circle cx="1275.5" cy="245.0" r="6" fill="#d97a00" stroke="#fcfcfb" stroke-width="2"/><text x="1322" y="79.3" class="el" fill="#1d1a24">Chrome</text><text x="1322" y="103.3" class="ev">91% · 243/268</text><text x="1322" y="224.3" class="el" fill="#1d1a24">Firefox</text><text x="1322" y="248.3" class="ev">73% · 196/268</text><text x="1322" y="276.3" class="el" fill="#1d1a24">Safari Technology Preview</text><text x="1322" y="300.3" class="ev">61% · 162/266</text></svg>
+<table><thead><tr><th>Browser</th><th>Latest run</th><th>Version</th><th>Subtests</th><th>Pass rate</th><th>First run in data</th></tr></thead><tbody><tr><td><i style="background:#7542e5"></i>Firefox</td><td>2026-11-16</td><td>162.0a1</td><td>196/268</td><td>73.1%</td><td>2026-08-04</td></tr><tr><td><i style="background:#0f8f6e"></i>Chrome</td><td>2026-11-16</td><td>160.0.8164.0</td><td>243/268</td><td>90.7%</td><td>2025-01-10</td></tr><tr><td><i style="background:#d97a00"></i>Safari Technology Preview</td><td>2026-11-16</td><td>256 preview</td><td>162/266</td><td>60.9%</td><td>2025-11-10</td></tr></tbody></table>
+<p class="note">Monthly samples Jan 2025 – Jun 2026, weekly from Jul 2026. Firefox results begin Aug 2026, when the tests started running in Firefox CI. Subtest totals differ slightly by browser and run. Hover a point for its exact value.</p>
+</main></body></html>
