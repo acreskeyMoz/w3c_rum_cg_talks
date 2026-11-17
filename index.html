@@ -55,7 +55,8 @@ body { font-family: var(--text); color: var(--ink); -webkit-font-smoothing: anti
 .slide.spec .chrome .num { opacity: 1; }
 .flow { width: 100%; height: auto; margin-top: auto; margin-bottom: 64px; }
 .flow.flow-top { margin-top: 48px; margin-bottom: 0; }
-.flow.flow-solo { margin-top: 240px; margin-bottom: 0; }
+.avail { display: inline-block; align-self: flex-start; margin-top: 22px; font-size: 30px; font-weight: 700; letter-spacing: .04em; color: #fff; background: var(--violet); border-radius: 999px; padding: 10px 26px 9px; }
+.flow.flow-solo { margin-top: 170px; margin-bottom: 0; }
 .flow-c { font-family: var(--text); font-size: 28px; font-weight: 600; fill: #2b0b52; }
 .flow-s { font-family: var(--text); font-size: 22px; fill: #55506a; }
 .flow-code { font-family: var(--mono); font-size: 34px; font-weight: 700; fill: #7542e5; }
@@ -225,13 +226,15 @@ code { font-family: var(--mono); font-size: .9em; background: var(--lilac-2); pa
 .chart-wrap { position: relative; margin-top: 26px; }
 .legend { list-style: none; display: flex; gap: 44px; font-size: 25px; font-weight: 600; margin-bottom: 10px; }
 .legend li { display: flex; align-items: center; gap: 12px; }
-#wpt-chart { display: block; width: 1696px; height: 600px; overflow: visible; }
+#wpt-chart { display: block; width: 1696px; height: 520px; overflow: visible; }
 #wpt-chart text { font-family: var(--text); fill: var(--muted); font-size: 22px; }
 #wpt-chart .end-lbl { fill: var(--ink); font-size: 26px; font-weight: 600; }
 #wpt-chart .end-val { fill: var(--ink); font-size: 26px; font-variant-numeric: tabular-nums; }
 .tip { position: absolute; pointer-events: none; background: #fff; border: 1px solid var(--lilac-2); border-radius: 12px; padding: 14px 18px; font-size: 21px; line-height: 1.5; box-shadow: 0 10px 30px rgba(43,11,82,.15); white-space: nowrap; }
 .tip b { font-weight: 700; }
 .tip .sw { display: inline-block; width: 22px; height: 4px; border-radius: 2px; vertical-align: middle; margin-right: 10px; }
+.ship-q { margin-top: 44px; font-size: 44px; font-weight: 600; color: var(--night); }
+.ship-q .q { color: var(--violet); margin-right: 14px; }
 .chart-note { font-size: 21px; color: var(--muted); margin-top: auto; margin-bottom: 56px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
@@ -376,6 +379,7 @@ body.nocursor { cursor: none; }
 <section class="slide spec" data-section="03 · Speculation Rules">
   <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
   <h2><span class="idx">03</span>Speculation Rules prefetch</h2>
+  <div class="avail">Enabled in Firefox Nightly · desktop</div>
   <svg class="flow flow-solo" viewBox="0 0 1696 262" role="img" aria-label="How Speculation Rules prefetch works: the page declares rules, a rule triggers immediately, on hover or on click, Firefox prefetches the next document in the background, and the click navigates instantly from the prefetch."><rect x="0" y="0" width="300" height="178" rx="18" fill="#f4ecf9"/><rect x="465" y="0" width="300" height="178" rx="18" fill="#f4ecf9"/><rect x="930" y="0" width="300" height="178" rx="18" fill="#f4ecf9"/><rect x="1395" y="0" width="300" height="178" rx="18" fill="#f4ecf9"/><rect x="90.0" y="14" width="120" height="150" rx="10" fill="#fff" stroke="#b9a2f0" stroke-width="2.5"/><rect x="102.0" y="30" width="96" height="12" rx="3" fill="#e8e3ef"/><rect x="102.0" y="56" width="96" height="56" rx="6" fill="#ede4fb" stroke="#7542e5" stroke-width="2"/><text x="150.0" y="96" text-anchor="middle" class="flow-code">{ }</text><rect x="102.0" y="126" width="70" height="10" rx="3" fill="#e8e3ef"/><rect x="102.0" y="144" width="84" height="10" rx="3" fill="#e8e3ef"/><rect x="555.0" y="14" width="120" height="150" rx="10" fill="#fff" stroke="#b9a2f0" stroke-width="2.5"/><rect x="567.0" y="30" width="96" height="12" rx="3" fill="#e8e3ef"/><rect x="567.0" y="60" width="80" height="10" rx="3" fill="#e8e3ef"/><path d="M567.0 96 H645.0" stroke="#7542e5" stroke-width="5" stroke-linecap="round"/><rect x="567.0" y="122" width="96" height="10" rx="3" fill="#e8e3ef"/><path transform="translate(625.0,88)" d="M0 0 L0 40 L11 30 L19 48 L27 44 L19 27 L34 27 Z" fill="#2b0b52" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/><rect x="1020.0" y="14" width="120" height="150" rx="10" fill="#fff" stroke="#7542e5" stroke-width="2.5" stroke-dasharray="9 7"/><path d="M1080.0 40 V104" stroke="#7542e5" stroke-width="6" stroke-linecap="round"/><path d="M1058.0 84 L1080.0 108 L1102.0 84" fill="none" stroke="#7542e5" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><rect x="1034.0" y="132" width="92" height="12" rx="6" fill="#e8e3ef"/><rect x="1034.0" y="132" width="60" height="12" rx="6" fill="#7542e5"/><rect x="1485.0" y="14" width="120" height="150" rx="10" fill="#fff" stroke="#7542e5" stroke-width="2.5"/><rect x="1497.0" y="30" width="96" height="12" rx="3" fill="#7542e5"/><path transform="translate(1523.0,56)" d="M26 0 L0 50 H20 L14 92 L46 34 H25 L34 0 Z" fill="#7542e5"/><path d="M324 89 H437" stroke="#2b0b52" stroke-width="4" stroke-linecap="round"/><path d="M425 77 L441 89 L425 101" fill="none" stroke="#2b0b52" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M789 89 H902" stroke="#2b0b52" stroke-width="4" stroke-linecap="round"/><path d="M890 77 L906 89 L890 101" fill="none" stroke="#2b0b52" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M1254 89 H1367" stroke="#2b0b52" stroke-width="4" stroke-linecap="round"/><path d="M1355 77 L1371 89 L1355 101" fill="none" stroke="#2b0b52" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><text x="150.0" y="222" text-anchor="middle" class="flow-c">Page declares rules</text><text x="150.0" y="254" text-anchor="middle" class="flow-s">script tag or HTTP header</text><text x="615.0" y="222" text-anchor="middle" class="flow-c">Rule triggers</text><text x="615.0" y="254" text-anchor="middle" class="flow-s">immediately, on hover, or on click</text><text x="1080.0" y="222" text-anchor="middle" class="flow-c">Firefox prefetches</text><text x="1080.0" y="254" text-anchor="middle" class="flow-s">the next document in the background</text><text x="1545.0" y="222" text-anchor="middle" class="flow-c">Click: instant</text><text x="1545.0" y="254" text-anchor="middle" class="flow-s">served from the prefetch</text></svg>
 </section>
 
@@ -383,6 +387,7 @@ body.nocursor { cursor: none; }
 <section class="slide spec" data-section="03 · Speculation Rules">
   <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
   <h2><span class="idx">03</span>Speculation Rules prefetch</h2>
+  <div class="avail">Enabled in Firefox Nightly · desktop</div>
   <div class="rows">
     <div class="row">
       <div><div class="name">Same-origin prefetch</div><span class="pill night">Nightly · desktop</span></div>
@@ -403,10 +408,11 @@ body.nocursor { cursor: none; }
   <h2>Firefox desktop prefetch progress on WPT</h2>
   <p class="chart-sub">Share of subtests passing in <code>/speculation-rules/prefetch</code>, experimental runs on <a href="https://wpt.fyi/results/speculation-rules/prefetch?label=experimental&amp;label=master&amp;product=firefox">wpt.fyi</a></p>
   <div class="chart-wrap">
-    <svg id="wpt-chart" viewBox="0 0 1696 600" role="img" aria-labelledby="wpt-desc"><desc id="wpt-desc">Line chart of WPT prefetch pass rate, August to November 2026.</desc></svg>
+    <svg id="wpt-chart" viewBox="0 0 1696 520" role="img" aria-labelledby="wpt-desc"><desc id="wpt-desc">Line chart of WPT prefetch pass rate, August to November 2026.</desc></svg>
     <div id="wpt-tip" class="tip" hidden></div>
     <table id="wpt-table" class="sr-only"><caption>WPT /speculation-rules/prefetch subtests passing</caption><thead><tr><th>Browser</th><th>Date</th><th>Passing</th><th>Total</th></tr></thead><tbody></tbody></table>
   </div>
+  <div class="ship-q"><span class="q">When does it ship?</span> When it’s ready :)</div>
   <p class="chart-note">Speculation Rules is currently enabled only in Firefox desktop. Results begin Aug 2026, when these tests started running in Firefox CI. Weekly samples.</p>
   <script type="application/json" id="wpt-data">{"firefox":[["2026-08-04",84,244],["2026-08-11",85,244],["2026-08-18",85,244],["2026-08-25",85,244],["2026-09-01",85,244],["2026-09-08",85,244],["2026-09-15",86,245],["2026-09-22",94,249],["2026-09-29",95,249],["2026-10-06",121,249],["2026-10-13",130,250],["2026-10-20",149,250],["2026-10-27",153,250],["2026-11-03",157,261],["2026-11-10",183,261],["2026-11-13",196,265]]}</script>
 </section>
@@ -429,7 +435,7 @@ body.nocursor { cursor: none; }
 <!-- 6a2. Prefetch timing telemetry -->
 <section class="slide spec" data-section="03 · Speculation Rules">
   <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
-  <h2>What Nightly sees so far: speed</h2>
+  <h2>What Nightly sees so far: performance</h2>
   <div class="prelim">Preliminary observations · not yet experimental data</div>
   <div class="stats telemetry timing">
     <div class="stat"><div class="lbl">FCP <span class="q">p75</span></div><div class="big">−216<span class="u">ms</span><span class="ast">*</span></div><div class="what">~23% faster (727 vs 943 ms)</div></div>
@@ -691,7 +697,7 @@ body.nocursor { cursor: none; }
     const SERIES = [
       { key: 'firefox', name: 'Firefox', color: '#7542e5', dash: null, w: 5 },
     ];
-    const W = 1696, H = 600, L = 70, R = 330, T = 16, B = 50;
+    const W = 1696, H = 520, L = 70, R = 330, T = 16, B = 50;
     const t0 = Date.parse('2026-07-25'), t1 = Date.parse('2026-11-20');
     const x = d => L + (Date.parse(d) - t0) / (t1 - t0) * (W - L - R);
     const y = v => T + (1 - v / 100) * (H - T - B);
