@@ -247,6 +247,13 @@ body.mouse #hud { opacity: .85; }
 #progress { position: fixed; left: 0; bottom: 0; height: 4px; background: var(--violet-hi); transition: width .25s; z-index: 5; }
 body.nocursor { cursor: none; }
 
+.step { opacity: 0; transform: translateY(18px); transition: opacity .35s ease, transform .35s ease; }
+.step.shown { opacity: 1; transform: none; }
+/* reveal only the numbers; labels stay visible */
+.step.reveal-nums { opacity: 1; transform: none; }
+.reveal-nums .big, .reveal-nums .mid, .timing.reveal-nums .what { opacity: 0; transition: opacity .35s ease; }
+.reveal-nums.shown .big, .reveal-nums.shown .mid, .timing.reveal-nums.shown .what { opacity: 1; }
+
 /* ---------- print: one slide per page ---------- */
 @media print {
   @page { size: 1920px 1080px; margin: 0; }
@@ -254,6 +261,7 @@ body.nocursor { cursor: none; }
   #deck { position: static; transform: none !important; width: auto; height: auto; }
   .slide { position: relative; opacity: 1; visibility: visible; break-after: page; }
   #hud, #progress { display: none; }
+  .step, .reveal-nums .big, .reveal-nums .mid, .timing.reveal-nums .what { opacity: 1; transform: none; }
 }
 </style>
 </head>
@@ -300,21 +308,21 @@ body.nocursor { cursor: none; }
   <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
   <h2><span class="idx">01</span>Measuring more of the user experience</h2>
   <div class="rows viz">
-    <div class="row">
+    <div class="row step">
       <div><div class="name">Layout Instability API</div><span class="pill open">Intent to prototype</span></div>
-      <div><div class="body">A next step toward measuring layout shifts in Firefox.</div>
+      <div><div class="body">Reports when visible content shifts unexpectedly.</div>
         <div class="refs"><a href="https://groups.google.com/a/mozilla.org/g/dev-platform/c/sap7BN5T9bg" target="_blank" rel="noopener">dev-platform intent</a><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1651528" target="_blank" rel="noopener">bug 1651528</a></div></div>
       <svg class="viz-g" viewBox="0 0 240 120" role="img" aria-label="A content block shifts down after its first paint"><rect x="6" y="6" width="150" height="108" rx="10" fill="#fff" stroke="#b9a2f0" stroke-width="2"/><rect x="20" y="18" width="122" height="10" rx="3" fill="#e8e3ef"/><rect x="20" y="38" width="122" height="28" rx="5" fill="none" stroke="#7542e5" stroke-width="2" stroke-dasharray="6 5" opacity=".55"/><rect x="20" y="74" width="122" height="28" rx="5" fill="#7542e5"/><path d="M184 40 V92" stroke="#2b0b52" stroke-width="3" stroke-linecap="round"/><path d="M175 83 L184 94 L193 83" fill="none" stroke="#2b0b52" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="196" y="72" class="viz-t">shift</text></svg>
     </div>
-    <div class="row">
+    <div class="row step">
       <div><div class="name">Container Timing</div><span class="pill night">Behind a pref · Firefox 156</span></div>
       <div><div class="body">Measures when meaningful regions of a page paint, beyond whole-page milestones.</div>
         <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1940240" target="_blank" rel="noopener">bug 1940240</a></div></div>
       <svg class="viz-g" viewBox="0 0 240 120" role="img" aria-label="One region of the page is timed when it paints"><rect x="6" y="6" width="150" height="108" rx="10" fill="#fff" stroke="#b9a2f0" stroke-width="2"/><rect x="20" y="18" width="122" height="10" rx="3" fill="#e8e3ef"/><rect x="20" y="38" width="78" height="64" rx="5" fill="#f4ecf9" stroke="#7542e5" stroke-width="3"/><rect x="106" y="38" width="36" height="64" rx="5" fill="#e8e3ef"/><path d="M98 70 H176" stroke="#7542e5" stroke-width="2" stroke-dasharray="5 5"/><circle cx="204" cy="70" r="24" fill="#fff" stroke="#7542e5" stroke-width="3"/><path d="M204 56 V70 L214 77" fill="none" stroke="#2b0b52" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </div>
-    <div class="row">
+    <div class="row step">
       <div><div class="name">Long Animation Frames (LoAF)</div><span class="pill open">Work in progress</span></div>
-      <div><div class="body">Follow along in Bugzilla.</div>
+      <div><div class="body">Reports frames that take over 50 ms, with the scripts that caused them.</div>
         <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1348405" target="_blank" rel="noopener">bug 1348405</a></div></div>
       <svg class="viz-g" viewBox="0 0 240 120" role="img" aria-label="A strip of animation frames with one long frame over 50 milliseconds"><rect x="6" y="58" width="20" height="26" rx="4" fill="#cdb9ff"/><rect x="32" y="58" width="20" height="26" rx="4" fill="#cdb9ff"/><rect x="166" y="58" width="20" height="26" rx="4" fill="#cdb9ff"/><rect x="192" y="58" width="20" height="26" rx="4" fill="#cdb9ff"/><rect x="218" y="58" width="20" height="26" rx="4" fill="#cdb9ff"/><rect x="58" y="58" width="102" height="26" rx="4" fill="#7542e5"/><path d="M58 96 V104 H160 V96" fill="none" stroke="#2b0b52" stroke-width="2"/><text x="109" y="44" text-anchor="middle" class="viz-t">long frame</text><text x="109" y="122" text-anchor="middle" class="viz-s">&gt; 50 ms</text></svg>
     </div>
@@ -328,7 +336,7 @@ body.nocursor { cursor: none; }
   <div class="rows viz">
     <div class="row">
       <div><div class="name">Layout Instability API</div><span class="pill open">Intent to prototype</span></div>
-      <div><div class="body">A next step toward measuring layout shifts in Firefox.</div>
+      <div><div class="body">Reports when visible content shifts unexpectedly.</div>
         <div class="refs"><a href="https://groups.google.com/a/mozilla.org/g/dev-platform/c/sap7BN5T9bg" target="_blank" rel="noopener">dev-platform intent</a><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1651528" target="_blank" rel="noopener">bug 1651528</a></div></div>
       <svg class="viz-g" viewBox="0 0 240 120" role="img" aria-label="A content block shifts down after its first paint"><rect x="6" y="6" width="150" height="108" rx="10" fill="#fff" stroke="#b9a2f0" stroke-width="2"/><rect x="20" y="18" width="122" height="10" rx="3" fill="#e8e3ef"/><rect x="20" y="38" width="122" height="28" rx="5" fill="none" stroke="#7542e5" stroke-width="2" stroke-dasharray="6 5" opacity=".55"/><rect x="20" y="74" width="122" height="28" rx="5" fill="#7542e5"/><path d="M184 40 V92" stroke="#2b0b52" stroke-width="3" stroke-linecap="round"/><path d="M175 83 L184 94 L193 83" fill="none" stroke="#2b0b52" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><text x="196" y="72" class="viz-t">shift</text></svg>
     </div>
@@ -340,7 +348,7 @@ body.nocursor { cursor: none; }
     </div>
     <div class="row">
       <div><div class="name">Long Animation Frames (LoAF)</div><span class="pill open">Work in progress</span></div>
-      <div><div class="body">Follow along in Bugzilla.</div>
+      <div><div class="body">Reports frames that take over 50 ms, with the scripts that caused them.</div>
         <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1348405" target="_blank" rel="noopener">bug 1348405</a></div></div>
       <svg class="viz-g" viewBox="0 0 240 120" role="img" aria-label="A strip of animation frames with one long frame over 50 milliseconds"><rect x="6" y="58" width="20" height="26" rx="4" fill="#cdb9ff"/><rect x="32" y="58" width="20" height="26" rx="4" fill="#cdb9ff"/><rect x="166" y="58" width="20" height="26" rx="4" fill="#cdb9ff"/><rect x="192" y="58" width="20" height="26" rx="4" fill="#cdb9ff"/><rect x="218" y="58" width="20" height="26" rx="4" fill="#cdb9ff"/><rect x="58" y="58" width="102" height="26" rx="4" fill="#7542e5"/><path d="M58 96 V104 H160 V96" fill="none" stroke="#2b0b52" stroke-width="2"/><text x="109" y="44" text-anchor="middle" class="viz-t">long frame</text><text x="109" y="122" text-anchor="middle" class="viz-s">&gt; 50 ms</text></svg>
     </div>
@@ -356,17 +364,17 @@ body.nocursor { cursor: none; }
   <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
   <h2><span class="idx">02</span>Resource &amp; Navigation Timing</h2>
   <div class="rows compact">
-    <div class="row">
+    <div class="row step">
       <div><div class="name">Cache attribution</div><span class="pill ship">On by default · Firefox 158</span></div>
       <div><div class="body"><code>deliveryType</code> enabled by default, including <code>"cache"</code>.</div>
         <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1914120" target="_blank" rel="noopener">bug 1914120</a><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2071913" target="_blank" rel="noopener">bug 2071913</a></div></div>
     </div>
-    <div class="row">
+    <div class="row step">
       <div><div class="name">Interim responses</div><span class="pill ship">Supported · Firefox 152</span></div>
       <div><div class="body"><code>firstInterimResponseStart</code>: when a 1xx, like 103 Early Hints, arrives.</div>
         <div class="refs"><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2006340" target="_blank" rel="noopener">bug 2006340</a></div></div>
     </div>
-    <div class="row">
+    <div class="row step">
       <div><div class="name">Timing-Allow-Origin &amp; redirects</div></div>
       <div><div class="body"><span class="pill ship inline">Fixed · Firefox 161</span> Protected attributes are hidden when a redirect hop fails the TAO check.</div>
         <div class="body tao2"><span class="pill night inline">In progress</span> Opt-in to redirect visibility via TAO on the destination.</div>
@@ -412,7 +420,7 @@ body.nocursor { cursor: none; }
     <div id="wpt-tip" class="tip" hidden></div>
     <table id="wpt-table" class="sr-only"><caption>WPT /speculation-rules/prefetch subtests passing</caption><thead><tr><th>Browser</th><th>Date</th><th>Passing</th><th>Total</th></tr></thead><tbody></tbody></table>
   </div>
-  <div class="ship-q"><span class="q">When does it ship?</span> When it’s ready :)</div>
+  <div class="ship-q step"><span class="q">When does it ship?</span> When it’s ready :)</div>
   <p class="chart-note">Speculation Rules is currently enabled only in Firefox desktop. Results begin Aug 2026, when these tests started running in Firefox CI. Weekly samples.</p>
   <script type="application/json" id="wpt-data">{"firefox":[["2026-08-04",84,244],["2026-08-11",85,244],["2026-08-18",85,244],["2026-08-25",85,244],["2026-09-01",85,244],["2026-09-08",85,244],["2026-09-15",86,245],["2026-09-22",94,249],["2026-09-29",95,249],["2026-10-06",121,249],["2026-10-13",130,250],["2026-10-20",149,250],["2026-10-27",153,250],["2026-11-03",157,261],["2026-11-10",183,261],["2026-11-13",196,265]]}</script>
 </section>
@@ -422,14 +430,14 @@ body.nocursor { cursor: none; }
   <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
   <h2>What Nightly sees so far: adoption</h2>
   <div class="prelim">Preliminary results</div>
-  <div class="stats telemetry">
+  <div class="stats telemetry step">
     <div class="stat"><div class="lbl">Top-1000 homepages</div><div class="big">~9.2%</div><div class="what">of Tranco top-1000 homepages have speculation rules</div></div>
-    <div class="stat"><div class="lbl">All hard navigations</div><div class="big">~4.0%</div><div class="what">of top-level pages ship at least one prefetch rule, including deeper pages, not just homepages</div></div>
+    <div class="stat"><div class="lbl">All hard navigations</div><div class="big">~4.0%</div><div class="what">of top-level pages ship at least one prefetch rule, including subpages, not just homepages</div></div>
     <div class="stat"><div class="lbl">Delivery method</div>
       <div class="split"><div><span class="mid">~3.6%</span><span class="via"><code>&lt;script&gt;</code> tag</span></div><div><span class="mid">~2.0%</span><span class="via">HTTP header</span></div></div>
       <div class="what">of top-level pages, by how rules arrive</div></div>
   </div>
-  <p class="stat-note">Homepages: Tranco top-1000 crawl with Firefox Nightly 158.0a1. Telemetry: Firefox Nightly desktop, Oct 30 – Nov 12 2026. Use counters over ~48M top-level pages. A page can deliver rules both ways.</p>
+  <p class="stat-note step with-prev">Homepages: Tranco top-1000 crawl with Firefox Nightly 158.0a1. Telemetry: Firefox Nightly desktop, Oct 30 – Nov 12 2026. Use counters over ~48M top-level pages. A page can deliver rules both ways.</p>
 </section>
 
 <!-- 6a2. Prefetch timing telemetry -->
@@ -437,7 +445,7 @@ body.nocursor { cursor: none; }
   <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
   <h2>What Nightly sees so far: performance</h2>
   <div class="prelim">Preliminary observations · not yet experimental data</div>
-  <div class="stats telemetry timing">
+  <div class="stats telemetry timing step reveal-nums">
     <div class="stat"><div class="lbl">FCP <span class="q">p75</span></div><div class="big">−216<span class="u">ms</span><span class="ast">*</span></div><div class="what">~23% faster (727 vs 943 ms)</div></div>
     <div class="stat"><div class="lbl">LCP <span class="q">p75</span></div><div class="big">−246<span class="u">ms</span><span class="ast">*</span></div><div class="what">~21% faster (900 vs 1,146 ms)</div></div>
   </div>
@@ -461,18 +469,19 @@ body.nocursor { cursor: none; }
   <div class="chrome"><div class="left"><img src="img/firefox-logo.png" alt=""><span class="section"></span></div><span class="num"></span></div>
   <h2><span class="idx">04</span>Faster connection establishment</h2>
   <div class="hev3">
-    <div class="name-lg">Happy Eyeballs v3 <span class="pill ship">Rolling out to Release</span></div>
+    <div class="name-lg step">Happy Eyeballs v3 <span class="pill ship">Rolling out to Release</span></div>
     <div class="hev3-grid">
-      <div><div class="k">What it is</div>
+      <div class="step with-prev"><div class="k">What it is</div>
         <p>How the browser connects to a server.</p>
         <p class="hev3-sub">IETF <strong>HAPPY</strong> draft (Apple, Google).</p></div>
-      <div><div class="k">Goals</div>
+      <div class="step"><div class="k">Goals</div>
         <ul class="hev3-aims">
+          <li>Race <strong>IPv6 vs IPv4</strong></li>
           <li>Race <strong>QUIC vs TCP</strong>, guided by <strong>HTTPS DNS records</strong></li>
           <li>Fall back fast, so HTTP/3 is <strong>safe</strong> to enable</li>
         </ul></div>
     </div>
-    <div class="refs"><a href="https://datatracker.ietf.org/doc/draft-ietf-happy-happyeyeballs-v3/" target="_blank" rel="noopener">draft-ietf-happy-happyeyeballs-v3</a><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1953459" target="_blank" rel="noopener">bug 1953459</a></div>
+    <div class="refs step with-prev"><a href="https://datatracker.ietf.org/doc/draft-ietf-happy-happyeyeballs-v3/" target="_blank" rel="noopener">draft-ietf-happy-happyeyeballs-v3</a><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1953459" target="_blank" rel="noopener">bug 1953459</a></div>
   </div>
 </section>
 
@@ -631,8 +640,9 @@ body.nocursor { cursor: none; }
     deck.style.transformOrigin = 'center center';
   }
 
-  function go(n, push = true) {
+  function go(n, push = true, back = false) {
     i = Math.max(0, Math.min(total - 1, n));
+    slides[i].querySelectorAll('.step').forEach(el => el.classList.toggle('shown', back));
     slides.forEach((s, k) => {
       s.classList.toggle('active', k === i);
       s.setAttribute('aria-hidden', k === i ? 'false' : 'true');
@@ -642,7 +652,19 @@ body.nocursor { cursor: none; }
     document.getElementById('progress').style.width = `${((i + 1) / total) * 100}%`;
     if (push) history.replaceState(null, '', `#${i + 1}`);
   }
-  const next = () => go(i + 1), prev = () => go(i - 1);
+  // a .step.with-prev reveals/hides together with the step before it
+  const next = () => {
+    const pending = [...slides[i].querySelectorAll('.step:not(.shown)')];
+    if (!pending.length) return go(i + 1);
+    pending[0].classList.add('shown');
+    for (const el of pending.slice(1)) { if (!el.classList.contains('with-prev')) break; el.classList.add('shown'); }
+  };
+  const prev = () => {
+    const shown = [...slides[i].querySelectorAll('.step.shown')];
+    if (!shown.length) return go(i - 1, true, true);
+    let el;
+    do { el = shown.pop(); el.classList.remove('shown'); } while (el.classList.contains('with-prev') && shown.length);
+  };
 
   function toggleFs() {
     if (document.fullscreenElement) document.exitFullscreen();
